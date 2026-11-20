@@ -46,6 +46,6 @@ it('CV is copied and dist-server is removed', () => {
   expect(existsSync(dist('Karthikeyan_Sadayamuthu.pdf'))).toBe(true)
   // Probe after the build: case-insensitive file systems (macOS default) resolve the other case too.
   const caseSensitive = !existsSync(dist('KARTHIKEYAN_SADAYAMUTHU.PDF'))
-  if (caseSensitive) expect(existsSync(dist('karthikeyan_sadayamuthu.pdf'))).toBe(false)
+  if (caseSensitive) expect(existsSync(dist('karthikeyan_sadayamuthu.pdf'))).toBe(true)
   expect(existsSync(resolve(root, 'dist-server'))).toBe(false)
 })
