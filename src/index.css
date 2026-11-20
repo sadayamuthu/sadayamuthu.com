@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-acc text-paper;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-acc;
+  }
+}
