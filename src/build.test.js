@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { execSync } from 'node:child_process'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const root = resolve(import.meta.dirname, '..')
@@ -42,10 +42,7 @@ it('sitemap lists canonical URLs', () => {
   expect(readFileSync(dist('sitemap.xml'), 'utf8')).toContain('https://sadayamuthu.com/research/exposuregate/')
 })
 
-it('CV is copied and dist-server is removed', () => {
-  expect(existsSync(dist('Karthikeyan_Sadayamuthu.pdf'))).toBe(true)
-  // Probe after the build: case-insensitive file systems (macOS default) resolve the other case too.
-  const caseSensitive = !existsSync(dist('KARTHIKEYAN_SADAYAMUTHU.PDF'))
-  if (caseSensitive) expect(existsSync(dist('karthikeyan_sadayamuthu.pdf'))).toBe(true)
+it('publishes no CV PDF and removes dist-server', () => {
+  expect(readdirSync(dist('.')).filter((f) => f.toLowerCase().endsWith('.pdf'))).toEqual([])
   expect(existsSync(resolve(root, 'dist-server'))).toBe(false)
 })

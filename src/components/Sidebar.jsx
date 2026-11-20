@@ -45,18 +45,6 @@ function Stats({ items }) {
   )
 }
 
-function CvButton({ label }) {
-  return (
-    <a
-      href="/cv.pdf"
-      download
-      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border text-sm font-medium bg-ink text-paper border-ink hover:bg-acc hover:border-acc transition-colors"
-    >
-      {label} <span aria-hidden="true">↓</span>
-    </a>
-  )
-}
-
 export default function Sidebar() {
   const ids = idLinks()
   const email = obfuscatedEmail()
@@ -77,7 +65,6 @@ export default function Sidebar() {
             </span>
           ))}
         </p>
-        <div className="mt-3"><CvButton label="CV" /></div>
         {all.length > 0 && <div className="mt-3"><Stats items={all.slice(0, 2)} /></div>}
       </div>
 
@@ -104,7 +91,6 @@ export default function Sidebar() {
             </div>
           )}
         </dl>
-        <div className="mt-4"><CvButton label="CV (PDF)" /></div>
         {all.length > 0 && (
           <>
             <Eyebrow className="mt-5 mb-2">At a glance</Eyebrow>
