@@ -25,11 +25,6 @@ function Links({ onNavigate }) {
           </NavLink>
         </li>
       ))}
-      <li>
-        <a href="/cv.pdf" download className="text-sm py-1 border-b border-transparent text-ink hover:text-acc">
-          CV <span aria-hidden="true">↓</span>
-        </a>
-      </li>
     </>
   )
 }

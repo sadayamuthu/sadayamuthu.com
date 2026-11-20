@@ -26,9 +26,9 @@ describe('Sidebar', () => {
     const papers = data.publications.filter((x) => x.type === 'paper' || x.type === 'preprint').length
     expect(screen.queryAllByText('Papers').length > 0).toBe(papers > 0)
   })
-  it('links the CV', () => {
+  it('has no CV link', () => {
     setup()
-    for (const l of screen.getAllByRole('link', { name: /CV/ })) expect(l).toHaveAttribute('href', '/cv.pdf')
+    expect(screen.queryAllByRole('link', { name: /CV/ })).toHaveLength(0)
   })
   it('renders no mailto link', () => {
     const { container } = setup()
