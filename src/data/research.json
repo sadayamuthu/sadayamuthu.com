@@ -1,0 +1,644 @@
+{
+  "person": {
+    "name": "Karthikeyan Sadayamuthu",
+    "given": "Karthikeyan",
+    "family": "Sadayamuthu",
+    "headline": "Autonomous Systems Security",
+    "jobTitle": "Principal Software Engineer",
+    "employer": "Autodesk",
+    "url": "https://sadayamuthu.com",
+    "statement": "I study how autonomous AI agents fail, and build open tools that check their work before it ships: who they act for, what they change, and what they leak.",
+    "bio": [],
+    "interests": [],
+    "lab": {
+      "name": "OpenAstra",
+      "url": "https://openastra.org"
+    },
+    "ids": {
+      "orcid": "0009-0008-3539-6048",
+      "github": "sadayamuthu",
+      "linkedin": "https://www.linkedin.com/in/sadayamuthu"
+    }
+  },
+  "themes": [
+    {
+      "name": "Compliance as code",
+      "slug": "compliance-as-code",
+      "projects": [
+        {
+          "name": "OCBC",
+          "fullName": "Open Controls Baseline Catalog",
+          "slug": "ocbc",
+          "title": "OCBC: Open Controls Baseline Catalog, a Machine-Readable NIST SP 800-53 Rev. 5 and FedRAMP Catalog",
+          "summary": "NIST SP 800-53 Rev. 5 and FedRAMP controls as a machine-readable catalog you can build on.",
+          "repo": "ocbc",
+          "language": "Python",
+          "doi": "10.5281/zenodo.23980534",
+          "version": "baseline-2026-03-27",
+          "date": "2026-11-05",
+          "featured": false,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/ocbc",
+            "site": "https://openastra.org/ocbc"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "OEBC",
+          "fullName": "Open Exposure Baseline Catalog",
+          "slug": "oebc",
+          "title": "OEBC: Open Exposure Baseline Catalog, a CVE Exposure Baseline Enriched with EPSS and CISA KEV",
+          "summary": "A CVE exposure baseline enriched with EPSS scores and CISA KEV data.",
+          "repo": "oebc",
+          "language": "Python",
+          "doi": "10.5281/zenodo.23980544",
+          "version": "baseline-2026-06-14",
+          "date": "2026-11-05",
+          "featured": false,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/oebc"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "ControlGate",
+          "slug": "controlgate",
+          "title": "ControlGate: A Pre-Commit and Pre-Merge NIST SP 800-53 Compliance Gate",
+          "summary": "Checks code changes against NIST 800-53 at pre-commit and PR time, with block or warn verdicts and remediation guidance.",
+          "repo": "controlgate",
+          "language": "Python",
+          "doi": "10.5281/zenodo.23980530",
+          "version": "0.2.1",
+          "date": "2026-11-05",
+          "featured": true,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/controlgate",
+            "site": "https://openastra.org/controlgate"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "ExposureGate",
+          "slug": "exposuregate",
+          "title": "ExposureGate: exploited-vulnerability gate for dependency lockfiles in pre-commit and CI",
+          "summary": "Blocks a change from adding a dependency version with a known, exploited vulnerability, by joining OEBC to the OSV database.",
+          "repo": "exposuregate",
+          "language": "Python",
+          "doi": "10.5281/zenodo.24241823",
+          "featured": true,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/exposuregate",
+            "pypi": "https://pypi.org/project/exposuregate/"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released",
+          "version": "0.1.0",
+          "date": "2026-11-15"
+        },
+        {
+          "name": "OpenCIQ",
+          "slug": "openciq",
+          "title": "OpenCIQ",
+          "summary": "Each NIST control gets a live score with the evidence behind it, and FedRAMP SSP and POA&M documents are generated in OSCAL.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Governing AI agents",
+      "slug": "governing-ai-agents",
+      "projects": [
+        {
+          "name": "OpenGPL",
+          "slug": "opengpl",
+          "title": "OpenGPL: Governance Policy Language",
+          "summary": "A declarative policy language for generative AI agents: what they can access, what they can produce, and the evidence to prove it.",
+          "repo": "opengpl",
+          "language": "Python",
+          "doi": "10.5281/zenodo.23844061",
+          "version": "0.2.0",
+          "date": "2026-10-31",
+          "featured": true,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/opengpl",
+            "site": "https://opengpl.org/"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "unasked",
+          "slug": "unasked",
+          "title": "unasked: see what your coding agent changed that you never asked for",
+          "summary": "Scores each change a coding agent made against your prompts, then reverts just the ones you never asked for.",
+          "repo": "unasked",
+          "language": "Go",
+          "doi": "10.5281/zenodo.23637740",
+          "version": "0.1.0",
+          "date": "2026-10-25",
+          "featured": false,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/unasked"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "mergelock",
+          "slug": "mergelock",
+          "title": "mergelock: a git-native merge gate",
+          "summary": "Catches conflicts git can't see between parallel AI agent branches, such as changed signatures with new callers.",
+          "repo": "mergelock",
+          "language": "Go",
+          "doi": "10.5281/zenodo.23637443",
+          "version": "0.1.5",
+          "date": "2026-10-25",
+          "featured": false,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/mergelock"
+          },
+          "metrics": [
+            {
+              "label": "Container downloads",
+              "value": "1,360",
+              "source": "https://github.com/sadayamuthu/mergelock/pkgs/container/mergelock",
+              "asOf": "2026-11"
+            }
+          ],
+          "usedBy": [],
+          "status": "released"
+        }
+      ]
+    },
+    {
+      "name": "Private and observable AI",
+      "slug": "private-and-observable-ai",
+      "projects": [
+        {
+          "name": "ZeroEgress",
+          "slug": "zeroegress",
+          "title": "ZeroEgress: an AI code editor that works offline",
+          "summary": "An offline AI code editor using local models, so nothing leaves your machine.",
+          "repo": "zero-egress",
+          "language": "TypeScript",
+          "doi": "10.5281/zenodo.23679808",
+          "version": "0.1.0",
+          "date": "2026-10-26",
+          "featured": false,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/zero-egress"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "anySQL",
+          "slug": "anysql",
+          "title": "anySQL: SQL Analytics for AI Systems",
+          "summary": "Query LLM responses, agent traces and RAG pipelines with standard SQL.",
+          "repo": "anySQL",
+          "language": "Python",
+          "doi": "10.5281/zenodo.23980548",
+          "version": "0.1.1",
+          "date": "2026-11-05",
+          "featured": true,
+          "links": {
+            "repo": "https://github.com/sadayamuthu/anySQL",
+            "site": "https://anysql.org"
+          },
+          "metrics": [],
+          "usedBy": [],
+          "status": "released"
+        },
+        {
+          "name": "OpenEQ",
+          "slug": "openeq",
+          "title": "OpenEQ",
+          "summary": "A record of every outbound connection from agents, IDEs and MCP servers, with egress rules and a \"what left this machine\" report.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Identity and access",
+      "slug": "identity-and-access",
+      "projects": [
+        {
+          "name": "OpenAPL",
+          "slug": "openapl",
+          "title": "OpenAPL: Access Policy Language for humans and AI agents",
+          "summary": "Access policy language for humans and AI agents.",
+          "repo": "openapl",
+          "doi": null,
+          "version": "0.1.0",
+          "date": "2026-11-19",
+          "featured": false,
+          "status": "released",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "AgentID",
+          "slug": "agentid",
+          "title": "AgentID",
+          "summary": "Cryptographic identities for agents, short-lived task-scoped credentials, and verifiable on-behalf-of chains.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "CyberLake",
+          "slug": "cyberlake",
+          "title": "CyberLake",
+          "summary": "A trust registry for AI agents and MCP servers: each entry carries a signed identity and a capabilities manifest, and is verified before it gets credentials.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {
+            "repo": "https://github.com/sadayamuthu/cyberlake"
+          },
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Quantum-safe cryptography",
+      "slug": "quantum-safe-cryptography",
+      "projects": [
+        {
+          "name": "OpenQR",
+          "slug": "openqr",
+          "title": "OpenQR",
+          "summary": "A machine-readable, daily-updated catalog of cryptographic algorithms, their NIST post-quantum status, library support, and migration mappings.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "OpenQS",
+          "slug": "openqs",
+          "title": "OpenQS",
+          "summary": "Finds quantum-vulnerable cryptography in code and infrastructure, produces a cryptography inventory, and gates new uses before merge.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "OpenQO",
+          "slug": "openqo",
+          "title": "OpenQO",
+          "summary": "Automated changes to hybrid post-quantum cryptography, plus ordered certificate and key rotation, with Unasked-style checks on every change.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Agent runtime security",
+      "slug": "agent-runtime-security",
+      "projects": [
+        {
+          "name": "OpenQA",
+          "slug": "openqa",
+          "title": "OpenQA",
+          "summary": "Repeatable adversarial suites (prompt injection, unasked edits, tool misuse, risky merges) run in CI, with a scorecard per run.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "IntentLock",
+          "slug": "intentlock",
+          "title": "IntentLock",
+          "summary": "Compiles the user's request into a capability envelope of allowed tools, arguments and recipients, and enforces it at an MCP proxy.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "Taintline",
+          "slug": "taintline",
+          "title": "Taintline",
+          "summary": "Labels every span of context by origin and blocks untrusted spans from flowing into sensitive tool-call arguments such as shell commands, URLs and recipients.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "Airlock",
+          "slug": "airlock",
+          "title": "Airlock",
+          "summary": "Runs each risky tool call in a short-lived microVM or WASM sandbox with no network by default, and checks results against policy before merging them back.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "Rewind",
+          "slug": "rewind",
+          "title": "Rewind",
+          "summary": "Records a compensating action for every agent action and rolls back whole sessions across files, git, cloud APIs and SaaS, flagging irreversible actions before they run.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "Fuse",
+          "slug": "fuse",
+          "title": "Fuse",
+          "summary": "Rate, spend and blast-radius limits per agent and per fleet; a tripped limit revokes AgentID credentials in one step and halts dependent agents.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "AgentChaos",
+          "slug": "agentchaos",
+          "title": "AgentChaos",
+          "summary": "Injects tool timeouts, malformed and poisoned outputs and misbehaving peer agents, then reports whether the agent fails safe, loops, makes things up or cascades.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Threat modeling and risk",
+      "slug": "threat-modeling-and-risk",
+      "projects": [
+        {
+          "name": "ThreatDiff",
+          "slug": "threatdiff",
+          "title": "ThreatDiff",
+          "summary": "Maps agent configs (prompts, tools, MCP servers, data sources) to attack paths labeled with OWASP Agentic Top 10 and MITRE ATLAS, and gates PRs that open new paths from untrusted input to dangerous actions.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "OATC",
+          "slug": "oatc",
+          "title": "OATC",
+          "summary": "OWASP LLM and Agentic Top 10 and MITRE ATLAS merged and cross-mapped in machine-readable JSON, with each threat mapped to OCBC controls.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "AgentRisk",
+          "slug": "agentrisk",
+          "title": "AgentRisk",
+          "summary": "One score per agent from its untrusted inputs, tool sensitivity, autonomy and reversibility, so a fleet can be ranked by risk.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    },
+    {
+      "name": "Retrieval and data security",
+      "slug": "retrieval-and-data-security",
+      "projects": [
+        {
+          "name": "Tripwire",
+          "slug": "tripwire",
+          "title": "Tripwire",
+          "summary": "Plants unique synthetic records per permission boundary in vector stores, and reports which boundary failed when one shows up in an output, log or egress.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "HubScan",
+          "slug": "hubscan",
+          "title": "HubScan",
+          "summary": "Finds documents that rank highly for far more queries than they should, plus chunks with embedded instructions, without needing attack signatures.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        },
+        {
+          "name": "ACLDrift",
+          "slug": "acldrift",
+          "title": "ACLDrift",
+          "summary": "Checks every indexed chunk against the access list of its source document and flags chunks retrievable beyond their original permissions.",
+          "doi": null,
+          "featured": false,
+          "status": "in-development",
+          "links": {},
+          "metrics": [],
+          "usedBy": []
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Untraced by Design: Hunting Attacks on LLM Agents with SQL over Cross-Layer Telemetry",
+      "authors": "K. Sadayamuthu",
+      "venue": "IEEE International Conference on Cybersecurity Systems, Technologies and Applications (CSTA 2026)",
+      "year": 2026,
+      "type": "paper",
+      "status": "Accepted, to appear",
+      "visibility": "public",
+      "links": { "artifacts": "https://github.com/sadayamuthu/untraced-by-design" }
+    }
+  ],
+  "peerReviews": [
+    {
+      "title": "Designing the AI-First Security Organization",
+      "publisher": "Cloud Security Alliance",
+      "group": "AI Safety",
+      "summary": "How to restructure security teams around fleets of AI agents, with governance and human-in-the-loop boundaries.",
+      "url": "https://cloudsecurityalliance.org/artifacts/designing-the-ai-first-security-organization",
+      "date": "Nov 2026",
+      "role": "Peer reviewer",
+      "status": "published"
+    },
+    {
+      "title": "Navigating Identity and Access Management (IAM): Standards and Protocols",
+      "publisher": "Cloud Security Alliance",
+      "group": "Identity and Access Management",
+      "date": "July 2026",
+      "summary": "A practical guide to SAML, OIDC, OAuth 2.0, SCIM and FIDO2 for human and non-human identities.",
+      "url": "https://cloudsecurityalliance.org/artifacts/navigating-identity-and-access-management-iam",
+      "role": "Peer reviewer",
+      "status": "published"
+    },
+    {
+      "title": "AARM Benchmarking Framework",
+      "publisher": "Cloud Security Alliance",
+      "date": "Oct 2026",
+      "role": "Peer reviewer",
+      "status": "in-review"
+    },
+    {
+      "title": "Authorization of AI Agents",
+      "publisher": "Cloud Security Alliance",
+      "date": "Oct 2026",
+      "role": "Peer reviewer",
+      "status": "in-review"
+    },
+    {
+      "title": "Securing Operational Technology in the Cloud with Zero Trust",
+      "publisher": "Cloud Security Alliance",
+      "date": "Oct 2026",
+      "role": "Peer reviewer",
+      "status": "in-review"
+    },
+    {
+      "title": "Build a Zero Trust Architecture",
+      "publisher": "Cloud Security Alliance",
+      "date": "Nov 2026",
+      "role": "Peer reviewer",
+      "status": "in-review"
+    },
+    {
+      "title": "The Six Pillars of MCP Security",
+      "publisher": "Cloud Security Alliance",
+      "date": "Nov 2026",
+      "role": "Peer reviewer",
+      "status": "in-review"
+    }
+  ],
+  "judging": [],
+  "talks": [],
+  "coverage": [],
+  "experience": [
+    {
+      "org": "Autodesk",
+      "title": "Principal Software Engineer",
+      "start": "",
+      "end": null,
+      "featured": true,
+      "outcomes": []
+    },
+    {
+      "org": "Comcast Cable Communications",
+      "title": "Senior Software Development Engineer",
+      "start": "",
+      "end": "",
+      "featured": true,
+      "outcomes": []
+    },
+    {
+      "org": "The Home Depot",
+      "title": "Senior Java Developer",
+      "start": "",
+      "end": "",
+      "featured": false,
+      "outcomes": []
+    },
+    {
+      "org": "Tata Consultancy Services",
+      "title": "IT Analyst",
+      "start": "",
+      "end": "",
+      "featured": false,
+      "outcomes": []
+    },
+    {
+      "org": "BNY Mellon",
+      "title": "Application Developer",
+      "start": "",
+      "end": "",
+      "featured": false,
+      "outcomes": []
+    },
+    {
+      "org": "Sybrant Technologies",
+      "title": "Software Engineer",
+      "start": "",
+      "end": "",
+      "featured": false,
+      "outcomes": []
+    }
+  ],
+  "skills": [],
+  "certifications": [
+    "Trusted AI Safety Expert (TAISE) – Cloud Security Alliance",
+    "Certificate of Cloud Security Knowledge (CCSK) – Cloud Security Alliance",
+    "Certificate of Competence in Zero Trust (CCZT) – Cloud Security Alliance",
+    "Microsoft Cybersecurity Analyst Professional Certificate",
+    "Google Cloud Cybersecurity Certificate",
+    "Google Cloud Data Analytics Certificate",
+    "Google Cybersecurity Professional Certificate",
+    "IBM Cybersecurity Analyst Professional Certificate",
+    "SailPoint Identity Security Leader Credential",
+    "Google Advanced Data Analytics Professional Certificate (v.2)",
+    "Neo4j Certified Professional",
+    "Pivotal Cloud Foundry Developer (v1.7)"
+  ],
+  "recent": []
+}
