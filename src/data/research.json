@@ -43,7 +43,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "NIST SP 800-53 Rev. 5, its SP 800-53B baselines and FedRAMP's OSCAL baselines are published separately, so every tool re-parses and re-joins them.",
+          "novelty": "One enriched JSON catalog merging all three, rebuilt daily and archived as versioned baselines with DOIs.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "OEBC",
@@ -62,7 +65,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "CVE severity alone doesn't show what attackers are exploiting; the signals that do (CISA KEV, FIRST EPSS) live in separate feeds.",
+          "novelty": "A daily, machine-readable catalog joining NVD, EPSS and KEV, with a derived exposure tier per CVE.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "ControlGate",
@@ -81,7 +87,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "NIST 800-53 and FedRAMP compliance is usually checked at audit time, long after the code that breaks a control has shipped.",
+          "novelty": "Checks each change at pre-commit and pull-request time across 8 security domains, maps findings to control IDs, and returns block or warn verdicts with remediation. Validated against a suite of deliberately vulnerable projects.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "ExposureGate",
@@ -100,7 +109,10 @@
           "usedBy": [],
           "status": "released",
           "version": "0.1.0",
-          "date": "2026-11-15"
+          "date": "2026-11-15",
+          "problem": "Dependency scanners flag every CVE alike, so the few being actively exploited get lost in the noise.",
+          "novelty": "Grades only the versions a change adds to its lockfiles, tiering each CVE by OEBC (KEV-listed is critical). Runs offline and fails closed on missing or stale data.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "OpenCIQ",
@@ -137,7 +149,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "Rules for what a generative AI system may access, produce and prove live in prose policies that software can't check.",
+          "novelty": "A declarative policy language for AI agents covering access, outputs and compliance evidence, evaluated at runtime and at rest.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "unasked",
@@ -155,7 +170,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "You asked for rate limiting; the agent also deleted a header other files use, loosened a test and bumped a dependency, all in the same diff.",
+          "novelty": "Scores every diff hunk against your request and the agent's stated intent, lists what nobody asked for, and reverts exactly those hunks.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "mergelock",
@@ -180,7 +198,10 @@
             }
           ],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "Two agents edit different files, git merges cleanly, and the build breaks, because one changed a signature and the other added a caller.",
+          "novelty": "Compares branches before they merge and reports the conflicts git can't see: changed signatures with new callers, deleted symbols still in use, duplicated functions.",
+          "role": "Sole author: designed, built and maintain it."
         }
       ]
     },
@@ -204,7 +225,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "AI code editors send code, prompts and telemetry to services you don't control, ruling them out for regulated and air-gapped work.",
+          "novelty": "Full AI editing (chat, agent, autocomplete) against self-hosted model servers only, with telemetry and cloud features removed and a runtime guard that blocks and logs any other connection.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "anySQL",
@@ -223,7 +247,10 @@
           },
           "metrics": [],
           "usedBy": [],
-          "status": "released"
+          "status": "released",
+          "problem": "Evidence of how an AI system behaves is split across model calls, agent traces, evaluations and retrieval logs, each in its own tool.",
+          "novelty": "Logs every AI API call into six canonical tables so they can be joined with standard SQL: cost, quality and attack evidence in one query.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "OpenEQ",
@@ -256,7 +283,10 @@
           "status": "released",
           "links": {},
           "metrics": [],
-          "usedBy": []
+          "usedBy": [],
+          "problem": "A support agent hands a refund to a refund agent; the gateway sees only the last hop, so nobody can say which human it's for or what a hijacked agent could reach.",
+          "novelty": "Evaluates the whole delegation chain, from the human through every agent, and returns ALLOW, DENY or REQUIRE_APPROVAL with the entitlements and control references behind it. No LLM sits in the decision path.",
+          "role": "Sole author: designed, built and maintain it."
         },
         {
           "name": "AgentID",
@@ -512,7 +542,9 @@
       "type": "paper",
       "status": "Accepted, to appear",
       "visibility": "public",
-      "links": { "artifacts": "https://github.com/sadayamuthu/untraced-by-design" }
+      "links": {
+        "artifacts": "https://github.com/sadayamuthu/untraced-by-design"
+      }
     }
   ],
   "peerReviews": [
@@ -579,48 +611,59 @@
     {
       "org": "Autodesk",
       "title": "Principal Software Engineer",
-      "start": "",
+      "start": "May 2022",
       "end": null,
       "featured": true,
-      "outcomes": []
+      "outcomes": [
+        "Built a FedRAMP-compliant Trust Dashboard: secure ingestion and analytics over FedRAMP-authorized vendor APIs, using service-to-service authentication and least-privilege IAM.",
+        "Designed a trust engineering framework aligned with NIST 800-53, FedRAMP and Zero Trust that turns real-time signals from Snyk, Qualys, CrowdStrike, Orca and Twistlock into normalized risk models.",
+        "Built the Consent & Permission Platform: APIs and event-driven workflows for GDPR, CCPA and FedRAMP privacy compliance, integrated with Salesforce, Adobe Marketo and Alida.",
+        "Built ELT pipelines (Airflow, dbt, Fivetran, Snowflake) with schema versioning, data-quality checks and automated compliance validation for security telemetry."
+      ],
+      "scope": "Lead architect for Autodesk's Trust Data Platform and Trust Dashboard, serving FedRAMP and commercial environments."
     },
     {
       "org": "Comcast Cable Communications",
       "title": "Senior Software Development Engineer",
-      "start": "",
-      "end": "",
+      "start": "May 2016",
+      "end": "May 2022",
       "featured": true,
-      "outcomes": []
+      "outcomes": [
+        "Re-architected monolithic applications into twelve-factor microservices with Spring Boot.",
+        "Added centralized logging with the ELK Stack and Kafka, and API caching with Redis and RabbitMQ.",
+        "Set up contract and load testing (rest-assured, Gatling) and continuous delivery with Gradle and GoCD."
+      ],
+      "scope": "Senior engineer on the Xfinity Sales Portal, on Pivotal Cloud Foundry."
     },
     {
       "org": "The Home Depot",
       "title": "Senior Java Developer",
-      "start": "",
-      "end": "",
+      "start": "May 2013",
+      "end": "May 2016",
       "featured": false,
       "outcomes": []
     },
     {
       "org": "Tata Consultancy Services",
       "title": "IT Analyst",
-      "start": "",
-      "end": "",
+      "start": "Nov 2011",
+      "end": "May 2013",
       "featured": false,
       "outcomes": []
     },
     {
       "org": "BNY Mellon",
       "title": "Application Developer",
-      "start": "",
-      "end": "",
+      "start": "Sep 2010",
+      "end": "Oct 2011",
       "featured": false,
       "outcomes": []
     },
     {
       "org": "Sybrant Technologies",
       "title": "Software Engineer",
-      "start": "",
-      "end": "",
+      "start": "Feb 2009",
+      "end": "Sep 2010",
       "featured": false,
       "outcomes": []
     }
