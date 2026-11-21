@@ -17,7 +17,8 @@
       "Agentic AI security",
       "Agent authorization and identity",
       "Policy as code for AI",
-      "Compliance automation (NIST, FedRAMP, OSCAL)"
+      "Compliance automation (NIST, FedRAMP, OSCAL)",
+      "Quantum-safe security"
     ],
     "lab": {
       "role": "Principal Author",
