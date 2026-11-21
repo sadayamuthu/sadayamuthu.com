@@ -21,13 +21,27 @@ function obfuscatedEmail() {
 function Affiliations() {
   return (
     <p className="text-sm leading-snug">
-      Founder,{' '}
+      {person.lab.role},{' '}
       <a href={person.lab.url} target="_blank" rel="noreferrer" className="text-acc hover:underline">
         {person.lab.name} <span aria-hidden="true">↗</span>
       </a>
       <br />
       {person.jobTitle}, {person.employer}
     </p>
+  )
+}
+
+function Photo({ className }) {
+  if (!person.photo) return null
+  return (
+    <img
+      src={person.photo}
+      alt={person.name}
+      width="120"
+      height="120"
+      className={`rounded-full border border-rule bg-white object-cover ${className}`}
+      style={{ objectPosition: '50% 30%' }}
+    />
   )
 }
 
@@ -53,8 +67,13 @@ export default function Sidebar() {
     <>
       {/* Compact header below lg */}
       <div className="lg:hidden px-4 py-4 border-b border-rule">
-        <h2 className="font-serif text-[17px] leading-tight">{person.name}</h2>
-        <p className="text-xs text-ink-muted mt-1">{person.headline}</p>
+        <div className="flex items-center gap-3">
+          <Photo className="w-[52px] h-[52px] shrink-0" />
+          <div>
+            <h2 className="font-serif text-[17px] leading-tight">{person.name}</h2>
+            <p className="text-xs text-ink-muted mt-1">{person.headline}</p>
+          </div>
+        </div>
         <p className="font-mono text-xs mt-2 flex flex-wrap gap-x-2">
           {ids.map((i, n) => (
             <span key={i.label}>
@@ -70,6 +89,7 @@ export default function Sidebar() {
 
       {/* Full sidebar at lg and up */}
       <aside className="hidden lg:block border-r border-rule pr-5 py-6">
+        <Photo className="w-[120px] h-[120px] mb-4" />
         <h2 className="font-serif text-xl leading-tight">{person.name}</h2>
         <p className="text-sm text-ink-muted my-2">{person.headline}</p>
         <Affiliations />

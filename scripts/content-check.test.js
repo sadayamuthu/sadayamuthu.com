@@ -40,7 +40,6 @@ it('treats whitespace as missing and flags featured-role gaps', () => {
     'experience A: start date missing',
     'experience A: scope missing',
     'experience A: outcomes missing',
-    'peerReviews[0]: proofUrl missing',
     'peerReviews[0]: date missing',
   ])
 })

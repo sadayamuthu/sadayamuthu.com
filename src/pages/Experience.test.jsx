@@ -8,8 +8,10 @@ it('shows featured roles and BNY Mellon under Earlier', () => {
   expect(screen.getByText('Comcast Cable Communications')).toBeInTheDocument()
   const earlier = screen.getByRole('heading', { name: 'Earlier' }).closest('section')
   expect(within(earlier).getByText(/BNY Mellon/)).toBeInTheDocument()
-  expect(screen.queryByText('Scope:')).toBeNull()
-  expect(screen.queryByText('Outcomes:')).toBeNull()
+  const withScope = data.experience.filter((r) => r.featured && r.scope?.trim()).length
+  const withOutcomes = data.experience.filter((r) => r.featured && r.outcomes?.length).length
+  expect(screen.queryAllByText('Scope:')).toHaveLength(withScope)
+  expect(screen.queryAllByText('Outcomes:')).toHaveLength(withOutcomes)
 })
 
 it('renders only Scope and Outcomes labels; ownership unlabeled', () => {
@@ -24,10 +26,11 @@ it('renders only Scope and Outcomes labels; ownership unlabeled', () => {
   })
   try {
     const { container } = render(<Experience />)
-    expect(screen.getByText('Scope:')).toBeInTheDocument()
-    expect(screen.getByText('Outcomes:')).toBeInTheDocument()
-    expect(screen.getByText('2022 – present')).toBeInTheDocument()
     const own = screen.getByText('Owns the platform.')
+    const article = own.closest('article')
+    expect(within(article).getByText('Scope:')).toBeInTheDocument()
+    expect(within(article).getByText('Outcomes:')).toBeInTheDocument()
+    expect(within(article).getByText('2022 – present')).toBeInTheDocument()
     expect(own.tagName).toBe('P')
     expect(own.previousElementSibling?.textContent ?? '').not.toMatch(/:$/)
     expect(own.children).toHaveLength(0)

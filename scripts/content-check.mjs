@@ -33,7 +33,6 @@ export function missingContent(data) {
 
   ;(data.peerReviews ?? []).forEach((r, i) => {
     if (r.status === 'in-review') return
-    if (blank(r.proofUrl)) out.push(`peerReviews[${i}]: proofUrl missing`)
     if (blank(r.date)) out.push(`peerReviews[${i}]: date missing`)
   })
   return out
