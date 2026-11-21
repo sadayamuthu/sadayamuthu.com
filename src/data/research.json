@@ -10,7 +10,7 @@
     "url": "https://sadayamuthu.com",
     "statement": "I study how autonomous AI agents fail, and build open tools that check their work before it ships: who they act for, what they change, and what they leak.",
     "bio": [
-      "Through OpenAstra, I publish open, citable frameworks that make an agent's permissions and actions verifiable before they reach production: policy languages, compliance-as-code tools and pre-merge checks, each archived on Zenodo with a DOI. My paper on hunting attacks against LLM agents with SQL over cross-layer telemetry is accepted at IEEE CSTA 2026.",
+      "Through OpenAstra, I publish open, citable frameworks that make an agent's permissions and actions verifiable before they reach production: policy languages, compliance-as-code tools and pre-merge checks. My paper on hunting attacks against LLM agents with SQL over cross-layer telemetry is accepted at IEEE CSTA 2026.",
       "I bring sixteen years of building secure, large-scale software to this work. At Autodesk, I am a Principal Software Engineer and lead architect of the Trust platforms across Commercial, FedRAMP Moderate and AWS GovCloud, including a multi-agent platform built on MCP that enforces authorization at the data source, not in the model.",
       "I review for Cloud Security Alliance working groups on AI safety, agent runtime management, identity and Zero Trust."
     ],
