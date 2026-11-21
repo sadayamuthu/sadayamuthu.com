@@ -44,3 +44,26 @@ it('shows the event for a talk', () => {
     data.talks = orig
   }
 })
+
+it('lists working groups with links and roles, before peer review', () => {
+  r()
+  const h = screen.getByRole('heading', { level: 2, name: 'Working groups' })
+  const section = h.closest('section')
+  for (const g of data.workingGroups) {
+    expect(screen.getByRole('link', { name: new RegExp(g.name.replace(/[()]/g, '.')) })).toHaveAttribute('href', g.url)
+  }
+  expect(section.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
+  const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
+  expect(h.compareDocumentPosition(peer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+})
+
+it('has no Working groups heading when empty', () => {
+  const orig = data.workingGroups
+  data.workingGroups = []
+  try {
+    r()
+    expect(screen.queryByRole('heading', { name: 'Working groups' })).toBeNull()
+  } finally {
+    data.workingGroups = orig
+  }
+})

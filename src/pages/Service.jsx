@@ -30,13 +30,34 @@ function Items({ list }) {
   )
 }
 
+function WorkingGroups({ list }) {
+  const orgs = [...new Set(list.map((g) => g.org))]
+  return orgs.map((org) => (
+    <div key={org} className="mb-4 last:mb-0">
+      <h3 className="text-sm text-ink-muted mb-1">{org}</h3>
+      <ul>
+        {list.filter((g) => g.org === org).map((g) => (
+          <li key={g.name} className="flex justify-between gap-4 py-2 border-b border-rule/60 last:border-b-0">
+            <span className="font-serif text-lg leading-snug">
+              {has(g.url) ? <ExtLink href={g.url}>{g.name}</ExtLink> : g.name}
+            </span>
+            {has(g.role) && <span className="text-sm text-ink-muted whitespace-nowrap pt-1">{g.role}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+}
+
 export default function Service() {
   const reviews = sortedPeerReviews()
   const judging = data.judging || []
   const talks = data.talks || []
+  const groups = data.workingGroups || []
   return (
     <div>
       <h1 className="font-serif text-3xl mb-3">Professional Service</h1>
+      <Section title="Working groups">{groups.length > 0 && <WorkingGroups list={groups} />}</Section>
       <Section title="Peer review">
         {reviews.length > 0 && (
           <div>

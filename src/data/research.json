@@ -606,6 +606,56 @@
       "status": "in-review"
     }
   ],
+  "workingGroups": [
+    {
+      "name": "Zero Trust Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/zero-trust",
+      "role": "Peer reviewer"
+    },
+    {
+      "name": "Autonomous Action Runtime Management (AARM) Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/autonomous-action-runtime-management-aarm",
+      "role": "Peer reviewer"
+    },
+    {
+      "name": "AI Safety Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/ai-safety",
+      "role": "Peer reviewer"
+    },
+    {
+      "name": "Identity and Access Management Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/identity-and-access-management",
+      "role": "Peer reviewer"
+    },
+    {
+      "name": "Top Threats Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/top-threats",
+      "role": "Member"
+    },
+    {
+      "name": "Security Controls Catalog Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/security-controls-catalog",
+      "role": "Member"
+    },
+    {
+      "name": "Compliance Automation Revolution Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/compliance-automation-revolution",
+      "role": "Member"
+    },
+    {
+      "name": "Quantum-safe Security Working Group",
+      "org": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org/research/working-groups/quantum-safe-security",
+      "role": "Member"
+    }
+  ],
   "judging": [],
   "talks": [],
   "coverage": [],
