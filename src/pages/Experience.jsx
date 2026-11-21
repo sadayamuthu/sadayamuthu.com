@@ -15,13 +15,19 @@ const groups = (list) =>
     .map((g) => ({ group: g.group, items: (g.items || []).filter(has) }))
     .filter((g) => has(g.group) && g.items.length > 0)
 
-function GroupList({ list }) {
+function GroupList({ list, stacked = false }) {
   return (
     <dl className="text-sm">
       {list.map((g) => (
         <div key={g.group} className="py-2 border-b border-rule/60 last:border-b-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
           <dt className="font-medium">{g.group}</dt>
-          <dd className="text-ink-muted">{g.items.join(' · ')}</dd>
+          {stacked ? (
+            <dd className="text-ink-muted">
+              <ul>{g.items.map((i) => <li key={i}>{i}</li>)}</ul>
+            </dd>
+          ) : (
+            <dd className="text-ink-muted">{g.items.join(' · ')}</dd>
+          )}
         </div>
       ))}
     </dl>
@@ -45,7 +51,7 @@ export default function Experience() {
         ))}
       </Section>
       <Section title="Skills">{skills.length > 0 && <GroupList list={skills} />}</Section>
-      <Section title="Certifications">{certs.length > 0 && <GroupList list={certs} />}</Section>
+      <Section title="Certifications">{certs.length > 0 && <GroupList list={certs} stacked />}</Section>
       <Section title="Education">
         {education.length > 0 && education.map((e) => (
           <div key={e.degree} className="flex flex-wrap items-baseline justify-between gap-x-4 py-2">

@@ -53,7 +53,8 @@ it('groups skills by area and certifications by issuer', () => {
   expect(certs.querySelectorAll('dt')).toHaveLength(data.certifications.length)
   const first = data.certifications[0]
   expect(certs.querySelector('dt').textContent).toBe(first.group)
-  expect(certs.querySelector('dd').textContent).toBe(first.items.join(' · '))
+  expect([...certs.querySelector('dd').querySelectorAll('li')].map((l) => l.textContent)).toEqual(first.items)
+  expect(skills.querySelector('dd').textContent).toBe(data.skills[0].items.join(' · '))
 })
 
 it('hides both sections when empty', () => {
