@@ -45,26 +45,31 @@ function withSkills(skills, certifications, fn) {
   try { fn() } finally { Object.assign(data, orig) }
 }
 
-it('hides skills section when both empty', () => {
+it('groups skills by area and certifications by issuer', () => {
+  render(<Experience />)
+  const skills = screen.getByRole('heading', { level: 2, name: 'Skills' }).closest('section')
+  const certs = screen.getByRole('heading', { level: 2, name: 'Certifications' }).closest('section')
+  expect(skills.querySelectorAll('dt')).toHaveLength(data.skills.length)
+  expect(certs.querySelectorAll('dt')).toHaveLength(data.certifications.length)
+  const first = data.certifications[0]
+  expect(certs.querySelector('dt').textContent).toBe(first.group)
+  expect(certs.querySelector('dd').textContent).toBe(first.items.join(' · '))
+})
+
+it('hides both sections when empty', () => {
   withSkills([], [], () => {
     render(<Experience />)
-    expect(screen.queryByRole('heading', { name: 'Skills & certifications' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Skills' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Certifications' })).toBeNull()
   })
 })
 
-it('only certifications: certs line, no skills line', () => {
-  withSkills([], ['Cert A', 'Cert B'], () => {
+it('drops groups with no items', () => {
+  withSkills([{ group: 'Go', items: ['  '] }, { group: 'Lang', items: ['Rust'] }], [], () => {
     render(<Experience />)
-    expect(screen.getByText('Cert A · Cert B')).toBeInTheDocument()
-    expect(screen.getAllByText(/ · /).filter((e) => e.closest('section')?.querySelector('h2')?.textContent === 'Skills & certifications')).toHaveLength(1)
-  })
-})
-
-it('only skills: skills line only', () => {
-  withSkills(['Go', 'Rust'], [], () => {
-    render(<Experience />)
-    expect(screen.getByText('Go · Rust')).toBeInTheDocument()
-    expect(screen.queryByText(/Cert/)).toBeNull()
+    expect(screen.queryByText('Go')).toBeNull()
+    expect(screen.getByText('Rust')).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Certifications' })).toBeNull()
   })
 })
 

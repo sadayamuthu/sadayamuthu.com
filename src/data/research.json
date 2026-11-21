@@ -720,46 +720,106 @@
     }
   ],
   "skills": [
-    "Multi-agent orchestration",
-    "Model Context Protocol (MCP)",
-    "LangChain",
-    "RAG",
-    "LLM guardrails",
-    "Agent evaluation (LangSmith, Opik)",
-    "FedRAMP Moderate",
-    "AWS GovCloud",
-    "NIST SP 800-53 Rev. 5",
-    "NIST AI RMF",
-    "ISO/IEC 42001",
-    "OSCAL",
-    "Zero Trust",
-    "Vulnerability management",
-    "AWS",
-    "Azure Identity",
-    "Terraform",
-    "Docker",
-    "Snowflake",
-    "Apache Airflow",
-    "dbt",
-    "Neo4j",
-    "Python",
-    "SQL",
-    "Java"
+    {
+      "group": "AI & agents",
+      "items": [
+        "Multi-agent orchestration",
+        "Model Context Protocol (MCP)",
+        "LangChain",
+        "RAG",
+        "LLM guardrails",
+        "Agent evaluation (LangSmith, Opik)"
+      ]
+    },
+    {
+      "group": "Security & compliance",
+      "items": [
+        "FedRAMP Moderate",
+        "AWS GovCloud",
+        "NIST SP 800-53 Rev. 5",
+        "NIST AI RMF",
+        "ISO/IEC 42001",
+        "OSCAL",
+        "Zero Trust",
+        "Vulnerability management"
+      ]
+    },
+    {
+      "group": "Cloud & infrastructure",
+      "items": [
+        "AWS",
+        "Azure Identity",
+        "Terraform",
+        "Docker"
+      ]
+    },
+    {
+      "group": "Data",
+      "items": [
+        "Snowflake",
+        "Apache Airflow",
+        "dbt",
+        "Neo4j"
+      ]
+    },
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "SQL",
+        "Java"
+      ]
+    }
   ],
   "certifications": [
-    "Trusted AI Safety Expert (TAISE) – Cloud Security Alliance",
-    "Certificate of Cloud Security Knowledge (CCSK) – Cloud Security Alliance",
-    "Certificate of Competence in Zero Trust (CCZT) – Cloud Security Alliance",
-    "Microsoft Azure Security Engineer Associate",
-    "Microsoft Cybersecurity Analyst Professional Certificate",
-    "Google Cloud Cybersecurity Certificate",
-    "Google Cloud Data Analytics Certificate",
-    "Google Cybersecurity Professional Certificate",
-    "IBM Cybersecurity Analyst Professional Certificate",
-    "SailPoint Identity Security Leader Credential",
-    "Google Advanced Data Analytics Professional Certificate (v.2)",
-    "Neo4j Certified Professional",
-    "Pivotal Cloud Foundry Developer (v1.7)"
+    {
+      "group": "Cloud Security Alliance",
+      "items": [
+        "Trusted AI Safety Expert (TAISE)",
+        "Certificate of Cloud Security Knowledge (CCSK)",
+        "Certificate of Competence in Zero Trust (CCZT)"
+      ]
+    },
+    {
+      "group": "Microsoft",
+      "items": [
+        "Azure Security Engineer Associate",
+        "Cybersecurity Analyst Professional Certificate"
+      ]
+    },
+    {
+      "group": "Google",
+      "items": [
+        "Cloud Cybersecurity Certificate",
+        "Cybersecurity Professional Certificate",
+        "Cloud Data Analytics Certificate",
+        "Advanced Data Analytics Professional Certificate (v.2)"
+      ]
+    },
+    {
+      "group": "IBM",
+      "items": [
+        "Cybersecurity Analyst Professional Certificate"
+      ]
+    },
+    {
+      "group": "SailPoint",
+      "items": [
+        "Identity Security Leader Credential"
+      ]
+    },
+    {
+      "group": "Neo4j",
+      "items": [
+        "Neo4j Certified Professional"
+      ]
+    },
+    {
+      "group": "Pivotal",
+      "items": [
+        "Cloud Foundry Developer (v1.7)"
+      ]
+    }
   ],
   "education": [
     {
