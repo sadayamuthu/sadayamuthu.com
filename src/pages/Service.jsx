@@ -52,11 +52,32 @@ function WorkingGroups({ list }) {
   })
 }
 
+function CourseReviews({ list }) {
+  return (
+    <ul>
+      {list.map((c) => {
+        const units = Number.isInteger(c.units) && c.units > 0 ? `${c.units} unit${c.units === 1 ? '' : 's'} reviewed` : ''
+        const meta = [c.publisher, c.role].filter(has).join(' · ')
+        return (
+          <li key={c.title} className="flex flex-wrap items-baseline justify-between gap-x-4 py-2 border-b border-rule/60 last:border-b-0">
+            <span>
+              <span className="font-serif text-lg">{c.title}</span>
+              {meta && <span className="block text-sm text-ink-muted">{meta}</span>}
+            </span>
+            {units && <span className="font-mono text-xs text-acc">{units}</span>}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 export default function Service() {
   const reviews = sortedPeerReviews()
   const judging = data.judging || []
   const talks = data.talks || []
   const groups = data.workingGroups || []
+  const courses = (data.courseReviews || []).filter((c) => has(c.title))
   return (
     <div>
       <h1 className="font-serif text-3xl mb-3">Professional Service</h1>
@@ -68,6 +89,7 @@ export default function Service() {
           </div>
         )}
       </Section>
+      <Section title="Course review">{courses.length > 0 && <CourseReviews list={courses} />}</Section>
       <Section title="Judging & editorial">{judging.length > 0 && <Items list={judging} />}</Section>
       <Section title="Talks">{talks.length > 0 && <Items list={talks} />}</Section>
     </div>

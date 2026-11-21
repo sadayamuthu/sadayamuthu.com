@@ -68,3 +68,28 @@ it('has no Working groups heading when empty', () => {
     data.workingGroups = orig
   }
 })
+
+it('lists course reviews with publisher and units reviewed, after peer review', () => {
+  r()
+  const h = screen.getByRole('heading', { level: 2, name: 'Course review' })
+  const section = h.closest('section')
+  expect(section.querySelectorAll('li')).toHaveLength(data.courseReviews.length)
+  for (const c of data.courseReviews) {
+    const li = within(section).getByText(c.title).closest('li')
+    expect(li.textContent).toContain(`${c.units} units reviewed`)
+    expect(li.textContent).toContain('Cloud Security Alliance')
+  }
+  const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
+  expect(peer.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+})
+
+it('has no Course review heading when empty', () => {
+  const orig = data.courseReviews
+  data.courseReviews = []
+  try {
+    r()
+    expect(screen.queryByRole('heading', { name: 'Course review' })).toBeNull()
+  } finally {
+    data.courseReviews = orig
+  }
+})

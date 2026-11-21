@@ -615,6 +615,26 @@
       "status": "in-review"
     }
   ],
+  "courseReviews": [
+    {
+      "title": "AI in Regulated Financial Services",
+      "publisher": "Cloud Security Alliance",
+      "units": 7,
+      "role": "Course reviewer"
+    },
+    {
+      "title": "Quantum Risk for Security Leaders",
+      "publisher": "Cloud Security Alliance",
+      "units": 6,
+      "role": "Course reviewer"
+    },
+    {
+      "title": "Certificate of Cloud Security Knowledge (CCSK)",
+      "publisher": "Cloud Security Alliance",
+      "units": 3,
+      "role": "Course reviewer"
+    }
+  ],
   "workingGroups": [
     {
       "name": "Zero Trust Working Group",
