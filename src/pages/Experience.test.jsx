@@ -8,6 +8,9 @@ it('lists every role as employer, title and dates only', () => {
     expect(screen.getByText(r.org)).toBeInTheDocument()
   }
   expect(screen.getByText('May 2022 – present')).toBeInTheDocument()
+  const rows = [...container.querySelectorAll('section div')].map((d) => d.textContent)
+  expect(rows[0]).toMatch(/^Autodesk/)
+  expect(rows[1]).toBe('OpenAstra · Principal AuthorJan 2025 – present')
   expect(screen.getByText('May 2016 – May 2022')).toBeInTheDocument()
   expect(screen.queryByRole('heading', { name: 'Earlier' })).toBeNull()
   expect(screen.queryByText(/Scope:|Outcomes:/)).toBeNull()
@@ -24,7 +27,8 @@ function withRole(idx, patch, fn) {
 it('empty start: no date text', () => {
   withRole(0, { start: '', end: null }, () => {
     render(<Experience />)
-    expect(screen.queryByText(/present/)).toBeNull()
+    const row = screen.getByText('Autodesk').closest('div')
+    expect(row.textContent).toBe('Autodesk · Principal Software Engineer')
   })
 })
 
