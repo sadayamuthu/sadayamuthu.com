@@ -104,3 +104,11 @@ it('only skills: skills line only', () => {
     expect(screen.queryByText(/Cert/)).toBeNull()
   })
 })
+
+it('lists education with school and year', () => {
+  render(<Experience />)
+  const e = data.education[0]
+  expect(screen.getByRole('heading', { level: 2, name: 'Education' })).toBeInTheDocument()
+  expect(screen.getByText(e.degree)).toBeInTheDocument()
+  expect(screen.getByText(e.year)).toBeInTheDocument()
+})

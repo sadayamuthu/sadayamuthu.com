@@ -8,7 +8,7 @@ it('lists known gaps', () => {
   const out = missingContent(data)
   expect(out).toContain('openapl: no DOI')
   expect(out.some((l) => l.startsWith('intentlock:'))).toBe(false)
-  expect(out).toContain('person.bio is empty')
+  expect(out.includes('person.bio is empty')).toBe(!data.person.bio.some((b) => b.trim()))
 })
 
 it('does not flag in-review peer reviews for missing proof or date', () => {

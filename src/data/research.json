@@ -9,8 +9,16 @@
     "employer": "Autodesk",
     "url": "https://sadayamuthu.com",
     "statement": "I study how autonomous AI agents fail, and build open tools that check their work before it ships: who they act for, what they change, and what they leak.",
-    "bio": [],
-    "interests": [],
+    "bio": [
+      "I have spent sixteen years building secure, large-scale software, and now work on the security of agentic AI. Through OpenAstra I publish open, citable frameworks — policy languages, compliance-as-code tools and pre-merge checks — that make what an agent is allowed to do, and what it actually did, verifiable before it reaches production.",
+      "At Autodesk I am a Principal Software Engineer and lead architect of the Trust platforms across Commercial, FedRAMP Moderate and AWS GovCloud environments, including an MCP-based multi-agent platform that enforces authorization at the data source rather than in the model. I review work for Cloud Security Alliance working groups on AI safety, agent runtime management, identity and Zero Trust."
+    ],
+    "interests": [
+      "Agentic AI security",
+      "Agent authorization and identity",
+      "Policy as code for AI",
+      "Compliance automation (NIST, FedRAMP, OSCAL)"
+    ],
     "lab": {
       "role": "Principal Author",
       "name": "OpenAstra",
@@ -675,12 +683,16 @@
       "end": null,
       "featured": true,
       "outcomes": [
-        "Built a FedRAMP-compliant Trust Dashboard: secure ingestion and analytics over FedRAMP-authorized vendor APIs, using service-to-service authentication and least-privilege IAM.",
-        "Designed a trust engineering framework aligned with NIST 800-53, FedRAMP and Zero Trust that turns real-time signals from Snyk, Qualys, CrowdStrike, Orca and Twistlock into normalized risk models.",
-        "Built the Consent & Permission Platform: APIs and event-driven workflows for GDPR, CCPA and FedRAMP privacy compliance, integrated with Salesforce, Adobe Marketo and Alida.",
-        "Built ELT pipelines (Airflow, dbt, Fivetran, Snowflake) with schema versioning, data-quality checks and automated compliance validation for security telemetry."
+        "Architected the Trust Agent Platform, an MCP-based multi-agent system for security, privacy, resilience and compliance workflows, replacing point solutions used by 5,000 teams.",
+        "Designed MCP servers that give agents governed enterprise context and enforce authorization at the source (Azure Identity), rather than relying on the model.",
+        "Added agent tracing and evaluation (LangSmith, Opik) and set organization-wide guidelines for secure AI-assisted development; applied LLMs to threat modeling and policy-to-code translation of NIST and FedRAMP controls.",
+        "Lead platform engineering across Commercial, FedRAMP Moderate and AWS GovCloud, and own NIST SP 800-53 Rev. 5 control implementation, POA&M remediation and FedRAMP assessment artifacts.",
+        "Designed the security framework that enforces Autodesk's 15 Security & Privacy Non-Negotiables across all products and infrastructure, aligned with NIST 800-53, FedRAMP and Zero Trust.",
+        "Unified vulnerability and posture signals from seven scanners (Snyk, Qualys, CrowdStrike, Orca, Twistlock, Burp Suite, Divvy) into risk models covering 1.5 million assets and 5,000 services, with ELT pipelines processing 15 million records a day.",
+        "Led the move to a FedRAMP-compliant Trust Dashboard and co-authored its architecture whitepaper.",
+        "Built the Consent & Permission Platform for GDPR, CCPA and FedRAMP privacy compliance, integrated with Salesforce, Marketo and Alida through AWS EventBridge."
       ],
-      "scope": "Lead architect for Autodesk's Trust Data Platform and Trust Dashboard, serving FedRAMP and commercial environments."
+      "scope": "Lead architect for Autodesk's Trust platforms (security, privacy, resilience and compliance) across Commercial, FedRAMP Moderate and AWS GovCloud environments."
     },
     {
       "org": "Comcast Cable Communications",
@@ -728,11 +740,38 @@
       "outcomes": []
     }
   ],
-  "skills": [],
+  "skills": [
+    "Multi-agent orchestration",
+    "Model Context Protocol (MCP)",
+    "LangChain",
+    "RAG",
+    "LLM guardrails",
+    "Agent evaluation (LangSmith, Opik)",
+    "FedRAMP Moderate",
+    "AWS GovCloud",
+    "NIST SP 800-53 Rev. 5",
+    "NIST AI RMF",
+    "ISO/IEC 42001",
+    "OSCAL",
+    "Zero Trust",
+    "Vulnerability management",
+    "AWS",
+    "Azure Identity",
+    "Terraform",
+    "Docker",
+    "Snowflake",
+    "Apache Airflow",
+    "dbt",
+    "Neo4j",
+    "Python",
+    "SQL",
+    "Java"
+  ],
   "certifications": [
     "Trusted AI Safety Expert (TAISE) – Cloud Security Alliance",
     "Certificate of Cloud Security Knowledge (CCSK) – Cloud Security Alliance",
     "Certificate of Competence in Zero Trust (CCZT) – Cloud Security Alliance",
+    "Microsoft Azure Security Engineer Associate",
     "Microsoft Cybersecurity Analyst Professional Certificate",
     "Google Cloud Cybersecurity Certificate",
     "Google Cloud Data Analytics Certificate",
@@ -742,6 +781,13 @@
     "Google Advanced Data Analytics Professional Certificate (v.2)",
     "Neo4j Certified Professional",
     "Pivotal Cloud Foundry Developer (v1.7)"
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering, Information Technology",
+      "school": "Annamalai University",
+      "year": "2008"
+    }
   ],
   "recent": []
 }
