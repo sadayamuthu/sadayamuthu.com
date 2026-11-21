@@ -28,6 +28,10 @@ describe('Sidebar', () => {
     const papers = data.publications.filter((x) => x.type === 'paper' || x.type === 'preprint').length
     expect(screen.queryAllByText('Papers').length > 0).toBe(papers > 0)
   })
+  it('shows the OpenAstra role', () => {
+    setup()
+    expect(screen.getByText(/Founder & Principal Author,/)).toBeInTheDocument()
+  })
   it('has no CV link', () => {
     setup()
     expect(screen.queryAllByRole('link', { name: /CV/ })).toHaveLength(0)

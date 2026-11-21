@@ -21,7 +21,7 @@ function obfuscatedEmail() {
 function Affiliations() {
   return (
     <p className="text-sm leading-snug">
-      Founder,{' '}
+      {person.lab.role ?? 'Founder'},{' '}
       <a href={person.lab.url} target="_blank" rel="noreferrer" className="text-acc hover:underline">
         {person.lab.name} <span aria-hidden="true">↗</span>
       </a>
