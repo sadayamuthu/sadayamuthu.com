@@ -79,7 +79,7 @@ it('lists course reviews as in-review rows with publisher and units, after peer 
     const li = within(section).getByText(c.title).closest('div.flex')
     expect(li.textContent).toContain(`Course reviewer · ${c.units} units`)
     expect(within(li).getByText('In review')).toBeInTheDocument()
-    expect(within(li).getByTitle('Cloud Security Alliance')).toBeInTheDocument()
+    expect(li.textContent).toContain('Cloud Security Alliance · Course reviewer')
   }
   const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
   expect(peer.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
