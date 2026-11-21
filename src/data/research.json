@@ -611,49 +611,57 @@
       "name": "Zero Trust Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/zero-trust",
-      "role": "Peer reviewer"
+      "role": "Peer reviewer",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Autonomous Action Runtime Management (AARM) Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/autonomous-action-runtime-management-aarm",
-      "role": "Peer reviewer"
+      "role": "Peer reviewer",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "AI Safety Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/ai-safety",
-      "role": "Peer reviewer"
+      "role": "Peer reviewer",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Identity and Access Management Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/identity-and-access-management",
-      "role": "Peer reviewer"
+      "role": "Peer reviewer",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Top Threats Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/top-threats",
-      "role": "Member"
+      "role": "Member",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Security Controls Catalog Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/security-controls-catalog",
-      "role": "Member"
+      "role": "Member",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Compliance Automation Revolution Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/compliance-automation-revolution",
-      "role": "Member"
+      "role": "Member",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     },
     {
       "name": "Quantum-safe Security Working Group",
       "org": "Cloud Security Alliance",
       "url": "https://cloudsecurityalliance.org/research/working-groups/quantum-safe-security",
-      "role": "Member"
+      "role": "Member",
+      "orgUrl": "https://cloudsecurityalliance.org/research/working-groups/"
     }
   ],
   "judging": [],

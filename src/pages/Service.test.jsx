@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Service from './Service'
 import { data } from '../data/site'
@@ -53,6 +53,7 @@ it('lists working groups with links and roles, before peer review', () => {
     expect(screen.getByRole('link', { name: new RegExp(g.name.replace(/[()]/g, '.')) })).toHaveAttribute('href', g.url)
   }
   expect(section.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
+  expect(within(section).getByRole('link', { name: /Cloud Security Alliance/ })).toHaveAttribute('href', 'https://cloudsecurityalliance.org/research/working-groups/')
   const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
   expect(h.compareDocumentPosition(peer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
