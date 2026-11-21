@@ -36,7 +36,7 @@ export default function Service() {
   const talks = data.talks || []
   return (
     <div>
-      <h1 className="font-serif text-3xl mb-3">Peer review &amp; judging</h1>
+      <h1 className="font-serif text-3xl mb-3">Professional Service</h1>
       <Section title="Peer review">
         {reviews.length > 0 && (
           <div>

@@ -5,9 +5,9 @@ import { data } from '../data/site'
 
 const r = () => render(<MemoryRouter><Service /></MemoryRouter>)
 
-it('is titled Peer review & judging and lists all reviews as compact rows without summaries', () => {
+it('is titled Professional Service and lists all reviews as compact rows without summaries', () => {
   r()
-  expect(screen.getByRole('heading', { level: 1, name: 'Peer review & judging' })).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 1, name: 'Professional Service' })).toBeInTheDocument()
   expect(screen.getAllByText(/^(Published|In review)$/)).toHaveLength(data.peerReviews.length)
   const published = data.peerReviews.filter((p) => p.url)
   for (const p of published) {
