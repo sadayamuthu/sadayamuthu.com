@@ -10,9 +10,11 @@ function dates(r) {
   return r.start
 }
 
+const item = (i) => (typeof i === 'string' ? { name: i } : i || {})
+
 const groups = (list) =>
   (list || [])
-    .map((g) => ({ group: g.group, items: (g.items || []).filter(has) }))
+    .map((g) => ({ group: g.group, items: (g.items || []).map(item).filter((i) => has(i.name)) }))
     .filter((g) => has(g.group) && g.items.length > 0)
 
 function GroupList({ list, stacked = false }) {
@@ -23,10 +25,20 @@ function GroupList({ list, stacked = false }) {
           <dt className="font-medium">{g.group}</dt>
           {stacked ? (
             <dd className="text-ink-muted">
-              <ul>{g.items.map((i) => <li key={i}>{i}</li>)}</ul>
+              <ul>
+                {g.items.map((i) => (
+                  <li key={i.name}>
+                    {has(i.url) ? (
+                      <a href={i.url} target="_blank" rel="noreferrer" className="text-acc hover:underline" aria-label={`${i.name}, ${g.group} (Credly badge)`}>
+                        {i.name} <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : i.name}
+                  </li>
+                ))}
+              </ul>
             </dd>
           ) : (
-            <dd className="text-ink-muted">{g.items.join(' · ')}</dd>
+            <dd className="text-ink-muted">{g.items.map((i) => i.name).join(' · ')}</dd>
           )}
         </div>
       ))}

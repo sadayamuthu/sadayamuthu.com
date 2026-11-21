@@ -775,49 +775,86 @@
     {
       "group": "Cloud Security Alliance",
       "items": [
-        "Trusted AI Safety Expert (TAISE)",
-        "Certificate of Cloud Security Knowledge (CCSK)",
-        "Certificate of Competence in Zero Trust (CCZT)"
+        {
+          "name": "Trusted AI Safety Expert (TAISE)",
+          "url": "https://www.credly.com/badges/adabf2d2-491d-4b36-a922-64049b6f6faa"
+        },
+        {
+          "name": "Certificate of Cloud Security Knowledge (CCSK) v5",
+          "url": "https://www.credly.com/badges/bbe29c0b-6c71-4c0a-8540-47c268771edc"
+        },
+        {
+          "name": "Certificate of Competence in Zero Trust (CCZT)",
+          "url": "https://www.credly.com/badges/1e311f66-1c46-4304-b468-4201fe5a0b77"
+        }
       ]
     },
     {
       "group": "Microsoft",
       "items": [
-        "Azure Security Engineer Associate",
-        "Cybersecurity Analyst Professional Certificate"
+        {
+          "name": "Azure Security Engineer Associate (AZ-500) Professional Certificate",
+          "url": "https://www.credly.com/badges/fe58a555-1beb-4887-8be5-ba7ad3b59aa4"
+        },
+        {
+          "name": "Cybersecurity Analyst Professional Certificate",
+          "url": "https://www.credly.com/badges/a173ad6a-9c6e-4973-ac66-a59f1efd3315"
+        }
       ]
     },
     {
       "group": "Google",
       "items": [
-        "Cloud Cybersecurity Certificate",
-        "Cybersecurity Professional Certificate",
-        "Cloud Data Analytics Certificate",
-        "Advanced Data Analytics Professional Certificate (v.2)"
+        {
+          "name": "Cloud Cybersecurity Certificate",
+          "url": "https://www.credly.com/badges/7878dd33-a09a-4ff1-8658-f9b401c79852"
+        },
+        {
+          "name": "Cybersecurity Professional Certificate",
+          "url": "https://www.credly.com/badges/592feb52-3fbe-46a6-acd2-e2e4d53ae31f"
+        },
+        {
+          "name": "Cloud Data Analytics Certificate",
+          "url": "https://www.credly.com/badges/8a2298e2-ce19-4515-ba6f-67b206d48d91"
+        },
+        {
+          "name": "Advanced Data Analytics Professional Certificate (v.2)",
+          "url": "https://www.credly.com/badges/c6f774a6-9071-4f62-94da-b801a635e80c"
+        }
       ]
     },
     {
       "group": "IBM",
       "items": [
-        "Cybersecurity Analyst Professional Certificate"
+        {
+          "name": "Cybersecurity Analyst Professional Certificate",
+          "url": "https://www.credly.com/badges/a83c3758-cca2-4b86-9c51-7c75bfcf15ec"
+        }
       ]
     },
     {
       "group": "SailPoint",
       "items": [
-        "Identity Security Leader Credential"
+        {
+          "name": "Identity Security Leader Credential",
+          "url": "https://www.credly.com/badges/9d8ebcb6-b3d7-4f2e-99ef-f665831d0a99"
+        }
       ]
     },
     {
       "group": "Neo4j",
       "items": [
-        "Neo4j Certified Professional"
+        {
+          "name": "Neo4j Certified Professional"
+        }
       ]
     },
     {
       "group": "Pivotal",
       "items": [
-        "Cloud Foundry Developer (v1.7)"
+        {
+          "name": "Cloud Foundry Developer (v1.7)"
+        }
       ]
     }
   ],

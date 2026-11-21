@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import Experience from './Experience'
 import { data } from '../data/site'
 
@@ -53,7 +53,16 @@ it('groups skills by area and certifications by issuer', () => {
   expect(certs.querySelectorAll('dt')).toHaveLength(data.certifications.length)
   const first = data.certifications[0]
   expect(certs.querySelector('dt').textContent).toBe(first.group)
-  expect([...certs.querySelector('dd').querySelectorAll('li')].map((l) => l.textContent)).toEqual(first.items)
+  expect([...certs.querySelector('dd').querySelectorAll('li')].map((l) => l.textContent.replace(' ↗', ''))).toEqual(first.items.map((i) => i.name))
+  const linked = data.certifications.flatMap((g) => g.items.filter((i) => i.url).map((i) => ({ ...i, group: g.group })))
+  expect(linked.length).toBeGreaterThan(0)
+  for (const c of linked) {
+    const a = within(certs).getByRole('link', { name: `${c.name}, ${c.group} (Credly badge)` })
+    expect(a).toHaveAttribute('href', c.url)
+    expect(c.url).toMatch(/^https:\/\/www\.credly\.com\/badges\/[0-9a-f-]{36}$/)
+  }
+  const plain = data.certifications.flatMap((g) => g.items).filter((i) => !i.url)
+  for (const c of plain) expect(within(certs).getByText(c.name).tagName).toBe('LI')
   expect(skills.querySelector('dd').textContent).toBe(data.skills[0].items.join(' · '))
 })
 
