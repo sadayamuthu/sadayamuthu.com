@@ -20,14 +20,14 @@ it('shows the status tag', () => {
   expect(screen.getByText('In review')).toHaveAttribute('title', 'Document not yet published')
 })
 
-it('abbreviates the publisher and joins only the present parts', () => {
+it('spells out the publisher and joins only the present parts', () => {
   const { container, unmount } = render(<ReviewRow review={{ ...base, status: 'in-review' }} />)
-  expect(container.querySelector('abbr')).toHaveAttribute('title', 'Cloud Security Alliance')
-  expect(container.textContent).toContain('CSA · AI Safety WG · Peer reviewer · Oct 2026')
-  expect(container.textContent).not.toContain('Cloud Security Alliance ·')
+  expect(container.querySelector('abbr')).toBeNull()
+  expect(container.textContent).toContain('Cloud Security Alliance · AI Safety WG · Peer reviewer · Oct 2026')
+  expect(container.textContent).not.toMatch(/\bCSA\b/)
   unmount()
   const r = render(<ReviewRow review={{ title: 'T', publisher: 'Cloud Security Alliance', role: 'Peer reviewer', status: 'in-review' }} />)
-  expect(r.container.textContent).toContain('CSA · Peer reviewer')
+  expect(r.container.textContent).toContain('Cloud Security Alliance · Peer reviewer')
   expect(r.container.textContent).not.toMatch(/WG|undefined| · $/)
 })
 

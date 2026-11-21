@@ -30,13 +30,50 @@ function Items({ list }) {
   )
 }
 
+function WorkingGroups({ list }) {
+  const orgs = [...new Set(list.map((g) => g.org))]
+  return orgs.map((org) => {
+    const orgUrl = list.find((g) => g.org === org && has(g.orgUrl))?.orgUrl
+    return (
+      <div key={org} className="mb-4 last:mb-0">
+        <h3 className="text-sm text-ink-muted mb-1">{orgUrl ? <ExtLink href={orgUrl}>{org}</ExtLink> : org}</h3>
+        <ul>
+          {list.filter((g) => g.org === org).map((g) => (
+            <li key={g.name} className="flex justify-between gap-4 py-2 border-b border-rule/60 last:border-b-0">
+              <span className="font-serif text-lg leading-snug">
+                {has(g.url) ? <ExtLink href={g.url}>{g.name}</ExtLink> : g.name}
+              </span>
+              {has(g.role) && <span className="text-sm text-ink-muted whitespace-nowrap pt-1">{g.role}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  })
+}
+
+const unitText = (n) => (Number.isInteger(n) && n > 0 ? `${n} unit${n === 1 ? '' : 's'}` : '')
+
+function CourseReviews({ list }) {
+  return (
+    <div>
+      {list.map((c) => (
+        <ReviewRow key={c.title} review={{ ...c, role: [c.role, unitText(c.units)].filter(has).join(' · ') }} />
+      ))}
+    </div>
+  )
+}
+
 export default function Service() {
   const reviews = sortedPeerReviews()
   const judging = data.judging || []
   const talks = data.talks || []
+  const groups = data.workingGroups || []
+  const courses = (data.courseReviews || []).filter((c) => has(c.title))
   return (
     <div>
-      <h1 className="font-serif text-3xl mb-3">Peer review &amp; judging</h1>
+      <h1 className="font-serif text-3xl mb-3">Professional Service</h1>
+      <Section title="Working groups">{groups.length > 0 && <WorkingGroups list={groups} />}</Section>
       <Section title="Peer review">
         {reviews.length > 0 && (
           <div>
@@ -44,6 +81,7 @@ export default function Service() {
           </div>
         )}
       </Section>
+      <Section title="Course review">{courses.length > 0 && <CourseReviews list={courses} />}</Section>
       <Section title="Judging & editorial">{judging.length > 0 && <Items list={judging} />}</Section>
       <Section title="Talks">{talks.length > 0 && <Items list={talks} />}</Section>
     </div>

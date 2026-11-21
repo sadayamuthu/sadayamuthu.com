@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Service from './Service'
 import { data } from '../data/site'
 
 const r = () => render(<MemoryRouter><Service /></MemoryRouter>)
 
-it('is titled Peer review & judging and lists all reviews as compact rows without summaries', () => {
+it('is titled Professional Service and lists all reviews as compact rows without summaries', () => {
   r()
-  expect(screen.getByRole('heading', { level: 1, name: 'Peer review & judging' })).toBeInTheDocument()
-  expect(screen.getAllByText(/^(Published|In review)$/)).toHaveLength(data.peerReviews.length)
+  expect(screen.getByRole('heading', { level: 1, name: 'Professional Service' })).toBeInTheDocument()
+  const peerSection = screen.getByRole('heading', { level: 2, name: 'Peer review' }).closest('section')
+  expect(within(peerSection).getAllByText(/^(Published|In review)$/)).toHaveLength(data.peerReviews.length)
   const published = data.peerReviews.filter((p) => p.url)
   for (const p of published) {
     expect(screen.getByRole('link', { name: new RegExp(p.title.slice(0, 20)) })).toHaveAttribute('href', p.url)
@@ -42,5 +43,55 @@ it('shows the event for a talk', () => {
     expect(screen.getByText('ConfX 2026 · Nov 2026')).toBeInTheDocument()
   } finally {
     data.talks = orig
+  }
+})
+
+it('lists working groups with links and roles, before peer review', () => {
+  r()
+  const h = screen.getByRole('heading', { level: 2, name: 'Working groups' })
+  const section = h.closest('section')
+  for (const g of data.workingGroups) {
+    expect(screen.getByRole('link', { name: new RegExp(g.name.replace(/[()]/g, '.')) })).toHaveAttribute('href', g.url)
+  }
+  expect(section.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
+  expect(within(section).getByRole('link', { name: /Cloud Security Alliance/ })).toHaveAttribute('href', 'https://cloudsecurityalliance.org/research/working-groups/')
+  const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
+  expect(h.compareDocumentPosition(peer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+})
+
+it('has no Working groups heading when empty', () => {
+  const orig = data.workingGroups
+  data.workingGroups = []
+  try {
+    r()
+    expect(screen.queryByRole('heading', { name: 'Working groups' })).toBeNull()
+  } finally {
+    data.workingGroups = orig
+  }
+})
+
+it('lists course reviews as in-review rows with publisher and units, after peer review', () => {
+  r()
+  const h = screen.getByRole('heading', { level: 2, name: 'Course review' })
+  const section = h.closest('section')
+  expect(within(section).getAllByText(/^(Published|In review)$/)).toHaveLength(data.courseReviews.length)
+  for (const c of data.courseReviews) {
+    const li = within(section).getByText(c.title).closest('div.flex')
+    expect(li.textContent).toContain(`Course reviewer · ${c.units} units`)
+    expect(within(li).getByText('In review')).toBeInTheDocument()
+    expect(li.textContent).toContain('Cloud Security Alliance · Course reviewer')
+  }
+  const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
+  expect(peer.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+})
+
+it('has no Course review heading when empty', () => {
+  const orig = data.courseReviews
+  data.courseReviews = []
+  try {
+    r()
+    expect(screen.queryByRole('heading', { name: 'Course review' })).toBeNull()
+  } finally {
+    data.courseReviews = orig
   }
 })

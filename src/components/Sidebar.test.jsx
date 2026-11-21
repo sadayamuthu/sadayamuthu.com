@@ -16,15 +16,22 @@ describe('Sidebar', () => {
     setup()
     expect(screen.queryByText(/Google Scholar/)).toBeNull()
   })
-  it('has no image', () => {
-    const { container } = setup()
-    expect(container.querySelector('img')).toBeNull()
+  it('shows the profile photo in both headers, named for screen readers', () => {
+    setup()
+    const imgs = screen.getAllByRole('img', { name: data.person.name })
+    expect(imgs).toHaveLength(2)
+    for (const i of imgs) expect(i).toHaveAttribute('src', data.person.photo)
   })
   it('shows stat tiles and omits zero ones', () => {
     setup()
     expect(screen.getAllByText('Open frameworks').length).toBeGreaterThan(0)
     const papers = data.publications.filter((x) => x.type === 'paper' || x.type === 'preprint').length
     expect(screen.queryAllByText('Papers').length > 0).toBe(papers > 0)
+  })
+  it('shows the OpenAstra role', () => {
+    setup()
+    expect(screen.getByText(/Principal Author,/)).toBeInTheDocument()
+    expect(screen.queryByText(/Founder/)).toBeNull()
   })
   it('has no CV link', () => {
     setup()

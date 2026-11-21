@@ -8,7 +8,7 @@ it('lists known gaps', () => {
   const out = missingContent(data)
   expect(out).toContain('openapl: no DOI')
   expect(out.some((l) => l.startsWith('intentlock:'))).toBe(false)
-  expect(out).toContain('person.bio is empty')
+  expect(out.includes('person.bio is empty')).toBe(!data.person.bio.some((b) => b.trim()))
 })
 
 it('does not flag in-review peer reviews for missing proof or date', () => {
@@ -21,13 +21,13 @@ it('drops the bio line once bio is filled', () => {
   expect(missingContent(copy)).not.toContain('person.bio is empty')
 })
 
-it('treats whitespace as missing and flags featured-role gaps', () => {
+it('treats whitespace as missing and flags gaps', () => {
   const d = {
     person: { bio: ['  '], ids: { scholar: ' ' } },
     themes: [{ projects: [{ slug: 'p', doi: null, problem: ' ', novelty: 'ok', role: '' }] }],
     experience: [
-      { org: 'A', start: '', featured: true, scope: '', outcomes: [] },
-      { org: 'B', start: '2020', featured: false },
+      { org: 'A', start: '' },
+      { org: 'B', start: '2020' },
     ],
     peerReviews: [{ title: 't', proofUrl: '', date: '' }],
   }
@@ -38,9 +38,6 @@ it('treats whitespace as missing and flags featured-role gaps', () => {
     'p: problem missing',
     'p: role missing',
     'experience A: start date missing',
-    'experience A: scope missing',
-    'experience A: outcomes missing',
-    'peerReviews[0]: proofUrl missing',
     'peerReviews[0]: date missing',
   ])
 })

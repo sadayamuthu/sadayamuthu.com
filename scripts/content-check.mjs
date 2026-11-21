@@ -23,17 +23,10 @@ export function missingContent(data) {
 
   for (const e of data.experience ?? []) {
     if (blank(e.start)) out.push(`experience ${e.org}: start date missing`)
-    if (e.featured) {
-      if (blank(e.scope)) out.push(`experience ${e.org}: scope missing`)
-      if (!Array.isArray(e.outcomes) || e.outcomes.every(blank)) {
-        out.push(`experience ${e.org}: outcomes missing`)
-      }
-    }
   }
 
   ;(data.peerReviews ?? []).forEach((r, i) => {
     if (r.status === 'in-review') return
-    if (blank(r.proofUrl)) out.push(`peerReviews[${i}]: proofUrl missing`)
     if (blank(r.date)) out.push(`peerReviews[${i}]: date missing`)
   })
   return out

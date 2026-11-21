@@ -2,14 +2,9 @@ const has = (s) => typeof s === 'string' && s.trim() !== ''
 
 const STATUS_LABEL = { published: 'Published', 'in-review': 'In review' }
 
-function Publisher({ name }) {
-  if (name === 'Cloud Security Alliance') return <abbr title="Cloud Security Alliance">CSA</abbr>
-  return name
-}
-
 export default function ReviewRow({ review: r }) {
   const parts = [
-    has(r.publisher) && <Publisher key="pub" name={r.publisher} />,
+    has(r.publisher) && r.publisher,
     has(r.group) && `${r.group} WG`,
     has(r.role) && r.role,
     has(r.date) && r.date,
