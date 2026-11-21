@@ -30,7 +30,8 @@ describe('Sidebar', () => {
   })
   it('shows the OpenAstra role', () => {
     setup()
-    expect(screen.getByText(/Founder & Principal Author,/)).toBeInTheDocument()
+    expect(screen.getByText(/Principal Author,/)).toBeInTheDocument()
+    expect(screen.queryByText(/Founder/)).toBeNull()
   })
   it('has no CV link', () => {
     setup()
