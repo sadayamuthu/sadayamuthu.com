@@ -27,7 +27,9 @@ it('lists the featured projects in order', () => {
 it('shows the DOI for ExposureGate', () => {
   renderAt('/')
   const row = screen.getByRole('link', { name: /exposuregate/i }).closest('div.flex')
-  expect(within(row).getByRole('link', { name: /10\.5281\/zenodo\.24241823/ })).toBeInTheDocument()
+  const doi = within(row).getByRole('link', { name: 'DOI 10.5281/zenodo.24241823' })
+  expect(doi).toHaveAttribute('href', 'https://doi.org/10.5281/zenodo.24241823')
+  expect(doi.textContent).toBe('DOI ↗')
   expect(row.textContent).not.toMatch(/undefined|null/)
 })
 
@@ -109,4 +111,10 @@ it('shows the Publications heading once when a paper exists', () => {
   } finally {
     data.publications = orig
   }
+})
+
+it('shows a project full name inline after its short name', () => {
+  renderAt('/')
+  const row = screen.getByRole('link', { name: 'OCBC' }).closest('p')
+  expect(row.textContent).toBe('OCBC · Open Controls Baseline Catalog')
 })

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { data, homeProjects, sortedPeerReviews, primaryLink, publicationsByYear } from '../data/site'
-import { FullName, ProjectName, Section, Row } from '../components/ui'
+import { ProjectName, Section, Row } from '../components/ui'
 import ReviewRow from '../components/ReviewRow'
 import { legacyRedirect } from '../lib/legacy'
 
@@ -22,10 +22,10 @@ function Statement({ text }) {
 function ProjectLink({ project }) {
   const { label, href } = primaryLink(project)
   if (!href) return null
-  const text = project.doi ? project.doi : label
+  const props = project.doi ? { title: project.doi, 'aria-label': `DOI ${project.doi}` } : {}
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="hover:underline">
-      {text} <span aria-hidden="true">↗</span>
+    <a href={href} target="_blank" rel="noreferrer" className="hover:underline whitespace-nowrap" {...props}>
+      {label} <span aria-hidden="true">↗</span>
     </a>
   )
 }
@@ -62,8 +62,15 @@ export default function Home() {
           <>
             {projects.map((p) => (
               <Row key={p.slug} aside={<ProjectLink project={p} />}>
-                <Link to={`/research/${p.slug}`} className="font-medium hover:text-acc"><ProjectName project={p} /></Link>
-                <FullName project={p} />
+                <p>
+                  <Link to={`/research/${p.slug}`} className="font-medium hover:text-acc"><ProjectName project={p} /></Link>
+                  {p.fullName && (
+                    <>
+                      <span className="text-sm text-ink-muted" aria-hidden="true"> · </span>
+                      <span className="text-sm text-ink-muted">{p.fullName}</span>
+                    </>
+                  )}
+                </p>
                 <p className="text-sm text-ink-muted">{p.summary}</p>
               </Row>
             ))}
