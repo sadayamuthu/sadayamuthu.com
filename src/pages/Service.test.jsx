@@ -8,7 +8,8 @@ const r = () => render(<MemoryRouter><Service /></MemoryRouter>)
 it('is titled Professional Service and lists all reviews as compact rows without summaries', () => {
   r()
   expect(screen.getByRole('heading', { level: 1, name: 'Professional Service' })).toBeInTheDocument()
-  expect(screen.getAllByText(/^(Published|In review)$/)).toHaveLength(data.peerReviews.length)
+  const peerSection = screen.getByRole('heading', { level: 2, name: 'Peer review' }).closest('section')
+  expect(within(peerSection).getAllByText(/^(Published|In review)$/)).toHaveLength(data.peerReviews.length)
   const published = data.peerReviews.filter((p) => p.url)
   for (const p of published) {
     expect(screen.getByRole('link', { name: new RegExp(p.title.slice(0, 20)) })).toHaveAttribute('href', p.url)
@@ -69,15 +70,16 @@ it('has no Working groups heading when empty', () => {
   }
 })
 
-it('lists course reviews with publisher and units reviewed, after peer review', () => {
+it('lists course reviews as in-review rows with publisher and units, after peer review', () => {
   r()
   const h = screen.getByRole('heading', { level: 2, name: 'Course review' })
   const section = h.closest('section')
-  expect(section.querySelectorAll('li')).toHaveLength(data.courseReviews.length)
+  expect(within(section).getAllByText(/^(Published|In review)$/)).toHaveLength(data.courseReviews.length)
   for (const c of data.courseReviews) {
-    const li = within(section).getByText(c.title).closest('li')
-    expect(li.textContent).toContain(`${c.units} units reviewed`)
-    expect(li.textContent).toContain('Cloud Security Alliance')
+    const li = within(section).getByText(c.title).closest('div.flex')
+    expect(li.textContent).toContain(`Course reviewer · ${c.units} units`)
+    expect(within(li).getByText('In review')).toBeInTheDocument()
+    expect(within(li).getByTitle('Cloud Security Alliance')).toBeInTheDocument()
   }
   const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
   expect(peer.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()

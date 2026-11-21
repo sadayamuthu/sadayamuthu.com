@@ -52,23 +52,15 @@ function WorkingGroups({ list }) {
   })
 }
 
+const unitText = (n) => (Number.isInteger(n) && n > 0 ? `${n} unit${n === 1 ? '' : 's'}` : '')
+
 function CourseReviews({ list }) {
   return (
-    <ul>
-      {list.map((c) => {
-        const units = Number.isInteger(c.units) && c.units > 0 ? `${c.units} unit${c.units === 1 ? '' : 's'} reviewed` : ''
-        const meta = [c.publisher, c.role].filter(has).join(' · ')
-        return (
-          <li key={c.title} className="flex flex-wrap items-baseline justify-between gap-x-4 py-2 border-b border-rule/60 last:border-b-0">
-            <span>
-              <span className="font-serif text-lg">{c.title}</span>
-              {meta && <span className="block text-sm text-ink-muted">{meta}</span>}
-            </span>
-            {units && <span className="font-mono text-xs text-acc">{units}</span>}
-          </li>
-        )
-      })}
-    </ul>
+    <div>
+      {list.map((c) => (
+        <ReviewRow key={c.title} review={{ ...c, role: [c.role, unitText(c.units)].filter(has).join(' · ') }} />
+      ))}
+    </div>
   )
 }
 
