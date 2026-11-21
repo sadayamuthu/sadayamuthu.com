@@ -1,48 +1,17 @@
-import { render, screen, within } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Experience from './Experience'
 import { data } from '../data/site'
 
-it('shows featured roles and BNY Mellon under Earlier', () => {
-  render(<Experience />)
-  expect(screen.getByText('Autodesk')).toBeInTheDocument()
-  expect(screen.getByText('Comcast Cable Communications')).toBeInTheDocument()
-  const earlier = screen.getByRole('heading', { name: 'Earlier' }).closest('section')
-  expect(within(earlier).getByText(/BNY Mellon/)).toBeInTheDocument()
-  const withScope = data.experience.filter((r) => r.featured && r.scope?.trim()).length
-  const withOutcomes = data.experience.filter((r) => r.featured && r.outcomes?.length).length
-  expect(screen.queryAllByText('Scope:')).toHaveLength(withScope)
-  expect(screen.queryAllByText('Outcomes:')).toHaveLength(withOutcomes)
-})
-
-it('renders only Scope and Outcomes labels; ownership unlabeled', () => {
-  const role = data.experience[0]
-  const orig = { ...role }
-  Object.assign(role, {
-    start: '2022',
-    end: null,
-    scope: 'Platform security.',
-    outcomes: ['Did a thing.'],
-    ownership: 'Owns the platform.',
-  })
-  try {
-    const { container } = render(<Experience />)
-    const own = screen.getByText('Owns the platform.')
-    const article = own.closest('article')
-    expect(within(article).getByText('Scope:')).toBeInTheDocument()
-    expect(within(article).getByText('Outcomes:')).toBeInTheDocument()
-    expect(within(article).getByText('2022 – present')).toBeInTheDocument()
-    expect(own.tagName).toBe('P')
-    expect(own.previousElementSibling?.textContent ?? '').not.toMatch(/:$/)
-    expect(own.children).toHaveLength(0)
-    const block = own.closest('article')
-    const labels = [...block.querySelectorAll('*')]
-      .filter((e) => e.children.length === 0 && /:\s*$/.test(e.textContent))
-      .map((e) => e.textContent.trim())
-    expect(labels.sort()).toEqual(['Outcomes:', 'Scope:'])
-    expect(container).toBeTruthy()
-  } finally {
-    Object.assign(role, orig)
+it('lists every role as employer, title and dates only', () => {
+  const { container } = render(<Experience />)
+  for (const r of data.experience) {
+    expect(screen.getByText(r.org)).toBeInTheDocument()
   }
+  expect(screen.getByText('May 2022 – present')).toBeInTheDocument()
+  expect(screen.getByText('May 2016 – May 2022')).toBeInTheDocument()
+  expect(screen.queryByRole('heading', { name: 'Earlier' })).toBeNull()
+  expect(screen.queryByText(/Scope:|Outcomes:/)).toBeNull()
+  expect(container.querySelector('article, ul.list-disc')).toBeNull()
 })
 
 function withRole(idx, patch, fn) {
@@ -52,13 +21,10 @@ function withRole(idx, patch, fn) {
   try { fn() } finally { Object.assign(role, orig) }
 }
 
-it('empty start: no date text and no date column', () => {
+it('empty start: no date text', () => {
   withRole(0, { start: '', end: null }, () => {
-    const { container } = render(<Experience />)
-    const art = container.querySelectorAll('article')[0]
-    expect(art.textContent).not.toMatch(/present/)
-    expect(art.className).not.toMatch(/grid-cols/)
-    expect(art.children).toHaveLength(1)
+    render(<Experience />)
+    expect(screen.queryByText(/present/)).toBeNull()
   })
 })
 
@@ -66,13 +32,6 @@ it('start with empty end shows just start', () => {
   withRole(1, { start: '2021', end: '' }, () => {
     render(<Experience />)
     expect(screen.getByText('2021')).toBeInTheDocument()
-  })
-})
-
-it('null end shows present', () => {
-  withRole(0, { start: '2020', end: null }, () => {
-    render(<Experience />)
-    expect(screen.getByText('2020 – present')).toBeInTheDocument()
   })
 })
 

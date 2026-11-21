@@ -23,12 +23,6 @@ export function missingContent(data) {
 
   for (const e of data.experience ?? []) {
     if (blank(e.start)) out.push(`experience ${e.org}: start date missing`)
-    if (e.featured) {
-      if (blank(e.scope)) out.push(`experience ${e.org}: scope missing`)
-      if (!Array.isArray(e.outcomes) || e.outcomes.every(blank)) {
-        out.push(`experience ${e.org}: outcomes missing`)
-      }
-    }
   }
 
   ;(data.peerReviews ?? []).forEach((r, i) => {
