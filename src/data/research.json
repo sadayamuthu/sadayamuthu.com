@@ -844,5 +844,39 @@
       "year": "2008"
     }
   ],
-  "recent": []
+  "recent": [],
+  "earlierOpenSource": [
+    {
+      "name": "LogMetrics",
+      "years": "2019–2020",
+      "summary": "Drop-in request and payload logging for Spring Boot and Flask services, with payload logging that can be switched on or off by configuration.",
+      "languages": [
+        "Java",
+        "Python"
+      ],
+      "role": "Author",
+      "links": [
+        {
+          "label": "PyPI",
+          "href": "https://pypi.org/project/logmetrics-sdk/"
+        },
+        {
+          "label": "Python",
+          "href": "https://github.com/devxchangeio/logmetrics-python"
+        },
+        {
+          "label": "Java",
+          "href": "https://github.com/devxchangeio/logmetrics-java"
+        }
+      ],
+      "metrics": [
+        {
+          "label": "PyPI downloads, all time",
+          "value": "11,357",
+          "source": "https://pepy.tech/projects/logmetrics-sdk",
+          "asOf": "2026-11"
+        }
+      ]
+    }
+  ]
 }

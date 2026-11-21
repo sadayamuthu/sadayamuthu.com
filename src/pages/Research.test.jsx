@@ -16,7 +16,8 @@ it('has the h1 and a lede counting released projects only', () => {
 
 it('shows one heading per theme with released projects and a card per released project', () => {
   setup()
-  expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(themesWithReleased())
+  const extra = (data.earlierOpenSource || []).length > 0 ? 1 : 0
+  expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(themesWithReleased() + extra)
   expect(document.querySelectorAll('a[href^="/research/"]')).toHaveLength(allProjects().length)
 })
 
@@ -47,4 +48,21 @@ it('expands OCBC and OEBC on their cards; other cards have no abbr', () => {
   expect(card.querySelector('abbr')).toHaveAttribute('title', 'Open Controls Baseline Catalog')
   expect(screen.getByText('Open Exposure Baseline Catalog')).toBeInTheDocument()
   expect(screen.getByRole('link', { name: 'OpenGPL' }).closest('div').querySelector('abbr')).toBeNull()
+})
+
+it('lists earlier open source after the lines of work, with links and a sourced metric', () => {
+  render(<MemoryRouter><Research /></MemoryRouter>)
+  const section = screen.getByRole('heading', { level: 2, name: 'Earlier open source' }).closest('section')
+  const e = data.earlierOpenSource[0]
+  expect(within(section).getByText(e.name)).toBeInTheDocument()
+  for (const l of e.links) expect(within(section).getByRole('link', { name: new RegExp(`^${l.label}`) })).toHaveAttribute('href', l.href)
+  expect(section.textContent).toContain(`${e.metrics[0].value} ${e.metrics[0].label}`)
+  expect(within(section).getByRole('link', { name: 'source' })).toHaveAttribute('href', e.metrics[0].source)
+  const sections = [...document.querySelectorAll('section')]
+  expect(sections[sections.length - 1]).toBe(section)
+})
+
+it('does not count earlier open source as a framework', () => {
+  render(<MemoryRouter><Research /></MemoryRouter>)
+  expect(screen.queryByRole('link', { name: 'LogMetrics' })).toBeNull()
 })
