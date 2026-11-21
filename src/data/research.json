@@ -819,22 +819,6 @@
           "url": "https://www.credly.com/badges/9d8ebcb6-b3d7-4f2e-99ef-f665831d0a99"
         }
       ]
-    },
-    {
-      "group": "Neo4j",
-      "items": [
-        {
-          "name": "Neo4j Certified Professional"
-        }
-      ]
-    },
-    {
-      "group": "Pivotal",
-      "items": [
-        {
-          "name": "Cloud Foundry Developer (v1.7)"
-        }
-      ]
     }
   ],
   "education": [
