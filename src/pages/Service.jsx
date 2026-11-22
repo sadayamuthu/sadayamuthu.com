@@ -36,14 +36,14 @@ function WorkingGroups({ list }) {
     const orgUrl = list.find((g) => g.org === org && has(g.orgUrl))?.orgUrl
     return (
       <div key={org} className="mb-4 last:mb-0">
-        <h3 className="text-sm text-ink-muted mb-1">{orgUrl ? <ExtLink href={orgUrl}>{org}</ExtLink> : org}</h3>
-        <ul>
+        <h3 className="font-serif text-xl mb-2">{orgUrl ? <ExtLink href={orgUrl}>{org}</ExtLink> : org}</h3>
+        <ul className="ml-1 pl-4 border-l-2 border-rule">
           {list.filter((g) => g.org === org).map((g) => (
-            <li key={g.name} className="flex justify-between gap-4 py-2 border-b border-rule/60 last:border-b-0">
-              <span className="font-serif text-lg leading-snug">
+            <li key={g.name} className="flex flex-wrap justify-between gap-x-4 py-1.5 border-b border-rule/60 last:border-b-0">
+              <span className="leading-snug">
                 {has(g.url) ? <ExtLink href={g.url}>{g.name}</ExtLink> : g.name}
               </span>
-              {has(g.role) && <span className="text-sm text-ink-muted whitespace-nowrap pt-1">{g.role}</span>}
+              {has(g.role) && <span className="text-sm text-ink-muted whitespace-nowrap">{g.role}</span>}
             </li>
           ))}
         </ul>

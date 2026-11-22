@@ -55,6 +55,10 @@ it('lists working groups with links and roles, before peer review', () => {
   }
   expect(section.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
   expect(within(section).getByRole('link', { name: /Cloud Security Alliance/ })).toHaveAttribute('href', 'https://cloudsecurityalliance.org/research/working-groups/')
+  const org = within(section).getByRole('heading', { level: 3, name: /Cloud Security Alliance/ })
+  const list = org.nextElementSibling
+  expect(list.tagName).toBe('UL')
+  expect(list.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
   const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
   expect(h.compareDocumentPosition(peer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
