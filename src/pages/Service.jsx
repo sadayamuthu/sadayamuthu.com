@@ -73,7 +73,7 @@ export default function Service() {
   return (
     <div>
       <h1 className="font-serif text-3xl mb-3">Professional Service</h1>
-      <Section title="Working groups">{groups.length > 0 && <WorkingGroups list={groups} />}</Section>
+      <Section title="Research Working Groups">{groups.length > 0 && <WorkingGroups list={groups} />}</Section>
       <Section title="Peer review">
         {reviews.length > 0 && (
           <div>
