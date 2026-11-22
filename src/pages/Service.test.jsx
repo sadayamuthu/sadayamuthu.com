@@ -15,7 +15,9 @@ it('is titled Professional Service and lists all reviews as compact rows without
     expect(screen.getByRole('link', { name: new RegExp(p.title.slice(0, 20)) })).toHaveAttribute('href', p.url)
     if (p.summary) expect(screen.queryByText(p.summary)).toBeNull()
   }
-  expect(screen.queryByRole('link', { name: /Acknowledgement/ })).toBeNull()
+  for (const p of data.peerReviews.filter((x) => x.proofUrl)) {
+    expect(screen.getByRole('link', { name: new RegExp(`Named as reviewer, p\\. ${p.proofPage}`) })).toHaveAttribute('href', p.proofUrl)
+  }
 })
 
 it('has no Talks or Judging headings when empty', () => {
@@ -25,7 +27,7 @@ it('has no Talks or Judging headings when empty', () => {
 })
 
 it('shows acknowledgement link when proofUrl set', () => {
-  const p = data.peerReviews[0]
+  const p = data.peerReviews.find((x) => !x.proofUrl)
   p.proofUrl = 'https://example.com/ack'
   try {
     r()

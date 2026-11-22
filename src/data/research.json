@@ -568,7 +568,9 @@
       "url": "https://cloudsecurityalliance.org/artifacts/designing-the-ai-first-security-organization",
       "date": "Nov 2026",
       "role": "Peer reviewer",
-      "status": "published"
+      "status": "published",
+      "proofUrl": "https://cloudsecurityalliance.org/download/artifacts/designing-the-ai-first-security-organization#page=4",
+      "proofPage": 4
     },
     {
       "title": "Navigating Identity and Access Management (IAM): Standards and Protocols",
@@ -578,7 +580,9 @@
       "summary": "A practical guide to SAML, OIDC, OAuth 2.0, SCIM and FIDO2 for human and non-human identities.",
       "url": "https://cloudsecurityalliance.org/artifacts/navigating-identity-and-access-management-iam",
       "role": "Peer reviewer",
-      "status": "published"
+      "status": "published",
+      "proofUrl": "https://cloudsecurityalliance.org/download/artifacts/navigating-identity-and-access-management-iam#page=3",
+      "proofPage": 3
     },
     {
       "title": "AARM Benchmarking Framework",

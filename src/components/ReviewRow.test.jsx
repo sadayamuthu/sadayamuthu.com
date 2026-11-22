@@ -38,3 +38,8 @@ it('shows an Acknowledgement link only when proofUrl is set', () => {
   render(<ReviewRow review={{ ...base, status: 'in-review', proofUrl: 'https://example.com/ack' }} />)
   expect(screen.getByRole('link', { name: /Acknowledgement/ })).toHaveAttribute('href', 'https://example.com/ack')
 })
+
+it('labels the acknowledgement with its PDF page when proofPage is set', () => {
+  render(<ReviewRow review={{ ...base, status: 'published', url: 'https://example.com/a', proofUrl: 'https://example.com/a.pdf#page=4', proofPage: 4 }} />)
+  expect(screen.getByRole('link', { name: /Named as reviewer, p\. 4/ })).toHaveAttribute('href', 'https://example.com/a.pdf#page=4')
+})
