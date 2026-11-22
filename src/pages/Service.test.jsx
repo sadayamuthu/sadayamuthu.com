@@ -15,7 +15,9 @@ it('is titled Professional Service and lists all reviews as compact rows without
     expect(screen.getByRole('link', { name: new RegExp(p.title.slice(0, 20)) })).toHaveAttribute('href', p.url)
     if (p.summary) expect(screen.queryByText(p.summary)).toBeNull()
   }
-  expect(screen.queryByRole('link', { name: /Acknowledgement/ })).toBeNull()
+  for (const p of data.peerReviews.filter((x) => x.proofUrl)) {
+    expect(screen.getByRole('link', { name: new RegExp(`Named as reviewer, p\\. ${p.proofPage}`) })).toHaveAttribute('href', p.proofUrl)
+  }
 })
 
 it('has no Talks or Judging headings when empty', () => {
@@ -25,7 +27,7 @@ it('has no Talks or Judging headings when empty', () => {
 })
 
 it('shows acknowledgement link when proofUrl set', () => {
-  const p = data.peerReviews[0]
+  const p = data.peerReviews.find((x) => !x.proofUrl)
   p.proofUrl = 'https://example.com/ack'
   try {
     r()
@@ -48,23 +50,27 @@ it('shows the event for a talk', () => {
 
 it('lists working groups with links and roles, before peer review', () => {
   r()
-  const h = screen.getByRole('heading', { level: 2, name: 'Working groups' })
+  const h = screen.getByRole('heading', { level: 2, name: 'Research Working Groups' })
   const section = h.closest('section')
   for (const g of data.workingGroups) {
     expect(screen.getByRole('link', { name: new RegExp(g.name.replace(/[()]/g, '.')) })).toHaveAttribute('href', g.url)
   }
   expect(section.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
   expect(within(section).getByRole('link', { name: /Cloud Security Alliance/ })).toHaveAttribute('href', 'https://cloudsecurityalliance.org/research/working-groups/')
+  const org = within(section).getByRole('heading', { level: 3, name: /Cloud Security Alliance/ })
+  const list = org.nextElementSibling
+  expect(list.tagName).toBe('UL')
+  expect(list.querySelectorAll('li')).toHaveLength(data.workingGroups.length)
   const peer = screen.getByRole('heading', { level: 2, name: 'Peer review' })
   expect(h.compareDocumentPosition(peer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
 
-it('has no Working groups heading when empty', () => {
+it('has no Research Working Groups heading when empty', () => {
   const orig = data.workingGroups
   data.workingGroups = []
   try {
     r()
-    expect(screen.queryByRole('heading', { name: 'Working groups' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Research Working Groups' })).toBeNull()
   } finally {
     data.workingGroups = orig
   }

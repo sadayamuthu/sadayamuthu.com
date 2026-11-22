@@ -8,7 +8,7 @@ it('lists every role as employer, title and dates only', () => {
     expect(screen.getByText(r.org)).toBeInTheDocument()
   }
   expect(screen.getByText('May 2022 – present')).toBeInTheDocument()
-  const rows = [...container.querySelectorAll('section div')].map((d) => d.textContent)
+  const rows = [...container.querySelector('section').querySelectorAll(':scope > div > div:first-child')].map((d) => d.textContent)
   expect(rows[0]).toMatch(/^Autodesk/)
   expect(rows[1]).toBe('OpenAstra · Principal AuthorJan 2025 – present')
   expect(screen.getByText('May 2016 – May 2022')).toBeInTheDocument()
@@ -57,9 +57,9 @@ it('groups skills by area and certifications by issuer', () => {
   const linked = data.certifications.flatMap((g) => g.items.filter((i) => i.url).map((i) => ({ ...i, group: g.group })))
   expect(linked.length).toBeGreaterThan(0)
   for (const c of linked) {
-    const a = within(certs).getByRole('link', { name: `${c.name}, ${c.group} (Credly badge)` })
+    const a = within(certs).getByRole('link', { name: `${c.name}, ${c.group} (verify)` })
     expect(a).toHaveAttribute('href', c.url)
-    expect(c.url).toMatch(/^https:\/\/www\.credly\.com\/badges\/[0-9a-f-]{36}$/)
+    expect(c.url).toMatch(/^https:\/\/(www\.credly\.com\/badges\/[0-9a-f-]{36}|verify\.skilljar\.com\/c\/[a-z0-9]+)$/)
   }
   const plain = data.certifications.flatMap((g) => g.items).filter((i) => !i.url)
   for (const c of plain) expect(within(certs).getByText(c.name).tagName).toBe('LI')
@@ -89,4 +89,15 @@ it('lists education with school and year', () => {
   expect(screen.getByRole('heading', { level: 2, name: 'Education' })).toBeInTheDocument()
   expect(screen.getByText(e.degree)).toBeInTheDocument()
   expect(screen.getByText(e.year)).toBeInTheDocument()
+})
+
+it('shows highlights under a role only when present', () => {
+  const { container, unmount } = render(<Experience />)
+  expect(container.querySelector('section').querySelectorAll('ul li')).toHaveLength(0)
+  unmount()
+  withRole(0, { highlights: ['Led a thing.'] }, () => {
+    const r = render(<Experience />)
+    expect(screen.getByText('Led a thing.').tagName).toBe('LI')
+    expect(r.container.querySelector('section').querySelectorAll('ul li')).toHaveLength(1)
+  })
 })

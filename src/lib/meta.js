@@ -7,7 +7,7 @@ const NAME = 'Karthikeyan Sadayamuthu'
 const PAGES = {
   '/research': { page: 'Research', description: `Open-source frameworks by ${NAME}, with releases, DOIs and citations.` },
   '/publications': { page: 'Publications', description: `Papers, preprints, patents and archived software releases by ${NAME}.` },
-  '/service': { page: 'Service', description: `Working groups, peer review and course review by ${NAME}.` },
+  '/service': { page: 'Service', description: `Research working groups, peer review and course review by ${NAME}.` },
   '/experience': { page: 'Experience', description: `Professional experience of ${NAME}.` },
   '/coverage': { page: 'Coverage', description: `Articles and mentions covering the work of ${NAME}.` },
 }

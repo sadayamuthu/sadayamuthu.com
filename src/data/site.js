@@ -85,6 +85,8 @@ export function stats() {
     { label: 'Zenodo DOIs', value: allProjects().filter((p) => p.doi).length },
     { label: 'Peer reviews', value: data.peerReviews.length },
     { label: 'Papers', value: papers },
+    { label: 'Judging roles', value: (data.judging || []).length },
+    { label: 'Talks', value: (data.talks || []).length },
   ].filter((s) => s.value > 0)
 }
 

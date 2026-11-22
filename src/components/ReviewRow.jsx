@@ -29,7 +29,7 @@ export default function ReviewRow({ review: r }) {
             <>
               {parts.length > 0 && ' · '}
               <a href={r.proofUrl} target="_blank" rel="noreferrer" className="text-acc hover:underline">
-                Acknowledgement <span aria-hidden="true">↗</span>
+                {Number.isInteger(r.proofPage) ? `Named as reviewer, p. ${r.proofPage}` : 'Acknowledgement'} <span aria-hidden="true">↗</span>
               </a>
             </>
           )}

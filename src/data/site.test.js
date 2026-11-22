@@ -38,6 +38,21 @@ describe('site selectors', () => {
     expect(s.find((x) => x.label === 'Open frameworks').value).toBe(released().length)
     expect(s.find((x) => x.label === 'Zenodo DOIs').value).toBe(released().filter((x) => x.doi).length)
   })
+  it('adds Judging roles and Talks tiles only when they have entries', () => {
+    const orig = { judging: data.judging, talks: data.talks }
+    try {
+      data.judging = []
+      data.talks = []
+      expect(stats().map((x) => x.label)).not.toContain('Judging roles')
+      expect(stats().map((x) => x.label)).not.toContain('Talks')
+      data.judging = [{ title: 'J' }, { title: 'K' }]
+      data.talks = [{ title: 'T' }]
+      expect(stats()).toContainEqual({ label: 'Judging roles', value: 2 })
+      expect(stats()).toContainEqual({ label: 'Talks', value: 1 })
+    } finally {
+      Object.assign(data, orig)
+    }
+  })
   it('counts every peer review, published or in review', () => {
     expect(stats()).toContainEqual({ label: 'Peer reviews', value: data.peerReviews.length })
   })
