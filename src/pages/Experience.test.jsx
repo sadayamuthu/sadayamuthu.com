@@ -8,7 +8,7 @@ it('lists every role as employer, title and dates only', () => {
     expect(screen.getByText(r.org)).toBeInTheDocument()
   }
   expect(screen.getByText('May 2022 – present')).toBeInTheDocument()
-  const rows = [...container.querySelectorAll('section div')].map((d) => d.textContent)
+  const rows = [...container.querySelector('section').querySelectorAll(':scope > div > div:first-child')].map((d) => d.textContent)
   expect(rows[0]).toMatch(/^Autodesk/)
   expect(rows[1]).toBe('OpenAstra · Principal AuthorJan 2025 – present')
   expect(screen.getByText('May 2016 – May 2022')).toBeInTheDocument()
@@ -89,4 +89,12 @@ it('lists education with school and year', () => {
   expect(screen.getByRole('heading', { level: 2, name: 'Education' })).toBeInTheDocument()
   expect(screen.getByText(e.degree)).toBeInTheDocument()
   expect(screen.getByText(e.year)).toBeInTheDocument()
+})
+
+it('shows highlights under a role only when present', () => {
+  const { container } = render(<Experience />)
+  const withH = data.experience.filter((r) => r.highlights?.length)
+  expect(withH.map((r) => r.org)).toEqual(['Autodesk'])
+  for (const h of withH[0].highlights) expect(screen.getByText(h).tagName).toBe('LI')
+  expect(container.querySelector('section').querySelectorAll('ul li')).toHaveLength(withH[0].highlights.length)
 })

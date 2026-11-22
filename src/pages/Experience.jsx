@@ -55,12 +55,22 @@ export default function Experience() {
     <div>
       <h1 className="font-serif text-3xl mb-3">Experience</h1>
       <Section>
-        {roles.length > 0 && roles.map((r) => (
-          <div key={`${r.org}-${r.title}`} className="flex flex-wrap items-baseline justify-between gap-x-4 py-2 border-b border-rule/60 last:border-b-0">
-            <span><span className="font-serif text-lg">{r.org}</span> · {r.title}</span>
-            {has(r.start) && <span className="font-mono text-xs text-acc">{dates(r)}</span>}
-          </div>
-        ))}
+        {roles.length > 0 && roles.map((r) => {
+          const highlights = (r.highlights || []).filter(has)
+          return (
+            <div key={`${r.org}-${r.title}`} className="py-2 border-b border-rule/60 last:border-b-0">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <span><span className="font-serif text-lg">{r.org}</span> · {r.title}</span>
+                {has(r.start) && <span className="font-mono text-xs text-acc">{dates(r)}</span>}
+              </div>
+              {highlights.length > 0 && (
+                <ul className="mt-1 ml-1 pl-4 border-l-2 border-rule text-sm text-ink-muted space-y-0.5">
+                  {highlights.map((h) => <li key={h}>{h}</li>)}
+                </ul>
+              )}
+            </div>
+          )
+        })}
       </Section>
       <Section title="Skills">{skills.length > 0 && <GroupList list={skills} />}</Section>
       <Section title="Certifications">{certs.length > 0 && <GroupList list={certs} stacked />}</Section>
