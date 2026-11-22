@@ -57,9 +57,9 @@ it('groups skills by area and certifications by issuer', () => {
   const linked = data.certifications.flatMap((g) => g.items.filter((i) => i.url).map((i) => ({ ...i, group: g.group })))
   expect(linked.length).toBeGreaterThan(0)
   for (const c of linked) {
-    const a = within(certs).getByRole('link', { name: `${c.name}, ${c.group} (Credly badge)` })
+    const a = within(certs).getByRole('link', { name: `${c.name}, ${c.group} (verify)` })
     expect(a).toHaveAttribute('href', c.url)
-    expect(c.url).toMatch(/^https:\/\/www\.credly\.com\/badges\/[0-9a-f-]{36}$/)
+    expect(c.url).toMatch(/^https:\/\/(www\.credly\.com\/badges\/[0-9a-f-]{36}|verify\.skilljar\.com\/c\/[a-z0-9]+)$/)
   }
   const plain = data.certifications.flatMap((g) => g.items).filter((i) => !i.url)
   for (const c of plain) expect(within(certs).getByText(c.name).tagName).toBe('LI')

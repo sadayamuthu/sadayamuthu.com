@@ -29,7 +29,7 @@ function GroupList({ list, stacked = false }) {
                 {g.items.map((i) => (
                   <li key={i.name}>
                     {has(i.url) ? (
-                      <a href={i.url} target="_blank" rel="noreferrer" className="text-acc hover:underline" aria-label={`${i.name}, ${g.group} (Credly badge)`}>
+                      <a href={i.url} target="_blank" rel="noreferrer" className="text-acc hover:underline" aria-label={`${i.name}, ${g.group} (verify)`}>
                         {i.name} <span aria-hidden="true">↗</span>
                       </a>
                     ) : i.name}
