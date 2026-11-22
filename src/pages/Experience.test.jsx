@@ -92,9 +92,12 @@ it('lists education with school and year', () => {
 })
 
 it('shows highlights under a role only when present', () => {
-  const { container } = render(<Experience />)
-  const withH = data.experience.filter((r) => r.highlights?.length)
-  expect(withH.map((r) => r.org)).toEqual(['Autodesk'])
-  for (const h of withH[0].highlights) expect(screen.getByText(h).tagName).toBe('LI')
-  expect(container.querySelector('section').querySelectorAll('ul li')).toHaveLength(withH[0].highlights.length)
+  const { container, unmount } = render(<Experience />)
+  expect(container.querySelector('section').querySelectorAll('ul li')).toHaveLength(0)
+  unmount()
+  withRole(0, { highlights: ['Led a thing.'] }, () => {
+    const r = render(<Experience />)
+    expect(screen.getByText('Led a thing.').tagName).toBe('LI')
+    expect(r.container.querySelector('section').querySelectorAll('ul li')).toHaveLength(1)
+  })
 })

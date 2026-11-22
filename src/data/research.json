@@ -705,12 +705,7 @@
       "org": "Autodesk",
       "title": "Principal Software Engineer",
       "start": "May 2022",
-      "end": null,
-      "highlights": [
-        "Set organization-wide standards for secure use of AI coding assistants.",
-        "Designed the framework that enforces Autodesk's 15 Security & Privacy Non-Negotiables.",
-        "Co-authored the Trust Dashboard architecture whitepaper."
-      ]
+      "end": null
     },
     {
       "org": "OpenAstra",
