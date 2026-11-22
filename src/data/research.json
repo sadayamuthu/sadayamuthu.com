@@ -204,7 +204,7 @@
           "metrics": [
             {
               "label": "Container downloads",
-              "value": "1,360",
+              "value": "2,284",
               "source": "https://github.com/sadayamuthu/mergelock/pkgs/container/mergelock",
               "asOf": "2026-11"
             }
